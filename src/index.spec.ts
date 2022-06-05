@@ -6,7 +6,7 @@ describe("Iterable", () => {
     const result = iterable.of(value)
 
     for (const element of result) {
-      expect(element).toBe(value)
+      expect(element).toStrictEqual(value)
     }
   })
 })

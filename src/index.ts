@@ -1,7 +1,7 @@
 /**
  * @since 0.12.0
  */
-import { HKT } from "fp-ts/HKT"
+import type {} from "fp-ts/HKT"
 import { Pointed1 } from "fp-ts/lib/Pointed"
 
 /**
@@ -22,6 +22,9 @@ declare module "fp-ts/HKT" {
   }
 }
 
+/**
+ * @category Constructors
+ */
 export const of: Pointed1<URI>["of"] = (a) => ({
   *[Symbol.iterator]() {
     yield a
