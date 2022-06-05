@@ -23,6 +23,18 @@ describe("Iterable", () => {
         })
       )
     })
+
+    it("FromReadonlyArray", () => {
+      fc.assert(
+        fc.property(fc.anything(), (anything) => {
+          const inputs = readonlyArray.of(anything)
+          const result = iterable.ToReadonlyArray(
+            iterable.FromReadonlyArray(inputs)
+          )
+          expect(result).toStrictEqual(readonlyArray.of(anything))
+        })
+      )
+    })
   })
 
   describe("laws", () => {

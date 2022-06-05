@@ -161,3 +161,14 @@ export const ToReadonlyArray: NaturalTransformation11<
 
   return result
 }
+
+export const FromReadonlyArray: NaturalTransformation11<
+  readonlyArray.URI,
+  URI
+> = (ax) => ({
+  *[Symbol.iterator]() {
+    for (const a of ax) {
+      yield a
+    }
+  },
+})
