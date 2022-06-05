@@ -26,7 +26,7 @@ declare module "fp-ts/HKT" {
 }
 
 /**
- * @category Constructors
+ * @category Pointed
  */
 export const of: Pointed1<URI>["of"] = (a) => ({
   *[Symbol.iterator]() {
@@ -34,6 +34,9 @@ export const of: Pointed1<URI>["of"] = (a) => ({
   },
 })
 
+/**
+ * @category Functor
+ */
 export const map =
   <A1, A2>(f: (a: A1) => A2) =>
   (fa: Iterable<A1>): Iterable<A2> => ({
@@ -44,11 +47,17 @@ export const map =
     },
   })
 
+/**
+ * @category Instances
+ */
 export const Functor: Functor1<URI> = {
   URI,
   map: (fa, f) => map(f)(fa),
 }
 
+/**
+ * @category Apply
+ */
 export const ap =
   <A1>(fa: Iterable<A1>) =>
   <A2>(fab: Iterable<(a: A1) => A2>): Iterable<A2> => ({
@@ -61,8 +70,14 @@ export const ap =
     },
   })
 
+/**
+ * @category Instances
+ */
 export const Apply: Apply1<URI> = { ...Functor, ap: (fab, fa) => ap(fa)(fab) }
 
+/**
+ * @category Eq
+ */
 export const getEq = <A>(eqa: eq.Eq<A>): eq.Eq<Iterable<A>> =>
   eq.fromEquals((xs, ys) => {
     const xi = xs[Symbol.iterator]()
