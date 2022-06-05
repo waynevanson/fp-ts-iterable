@@ -25,8 +25,15 @@ describe("Iterable", () => {
       )
     })
 
-    it("apply", () => {
+    it("Apply", () => {
       laws.apply(iterable.Apply)(
+        (arbitrary) => arbitrary.map(iterable.of),
+        iterable.getEq
+      )
+    })
+
+    it("Applicative", () => {
+      laws.applicative(iterable.Applicative)(
         (arbitrary) => arbitrary.map(iterable.of),
         iterable.getEq
       )

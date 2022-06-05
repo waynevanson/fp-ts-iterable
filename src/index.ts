@@ -3,9 +3,11 @@
  */
 import { eq } from "fp-ts"
 import type {} from "fp-ts/HKT"
+import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { Pointed1 } from "fp-ts/lib/Pointed"
+import { Pointed } from "fp-ts/lib/ReadonlyNonEmptyArray"
 
 /**
  * @category Model
@@ -74,6 +76,11 @@ export const ap =
  * @category Instances
  */
 export const Apply: Apply1<URI> = { ...Functor, ap: (fab, fa) => ap(fa)(fab) }
+
+/**
+ * @category Instances
+ */
+export const Applicative: Applicative1<URI> = { ...Pointed, ...Apply }
 
 /**
  * @category Eq
