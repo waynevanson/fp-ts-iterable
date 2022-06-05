@@ -33,6 +33,21 @@ describe("Iterable", () => {
         })
       )
     })
+
+    test("flap", () => {
+      fc.assert(
+        fc.property(fc.integer(), (integer) => {
+          const f = (a: number) => a.toString()
+          const expected = f(integer)
+          const result = pipe(
+            iterable.of(f),
+            iterable.flap(integer),
+            iterable.ToReadonlyArray
+          )
+          expect(result).toStrictEqual(readonlyArray.of(expected))
+        })
+      )
+    })
   })
 
   describe("Natural Transformations", () => {

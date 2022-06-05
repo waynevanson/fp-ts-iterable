@@ -70,6 +70,11 @@ export const Functor: Functor1<URI> = {
 export const bindTo = functor.bindTo(Functor)
 
 /**
+ * @category Functor
+ */
+export const flap = functor.flap(Functor)
+
+/**
  * @category Apply
  */
 export const ap =
