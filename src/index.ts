@@ -1,7 +1,15 @@
 /**
  * @since 0.12.0
  */
-import { array, eq, readonlyArray, apply, functor, pointed } from "fp-ts"
+import {
+  array,
+  eq,
+  readonlyArray,
+  apply,
+  functor,
+  pointed,
+  chain as chain_,
+} from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
@@ -133,6 +141,11 @@ export const chain =
  * @category Instances
  */
 export const Chain: Chain1<URI> = { ...Apply, chain: (fa, f) => chain(f)(fa) }
+
+/**
+ * @category Chain
+ */
+export const bind = chain_.bind(Chain)
 
 /**
  * @category Instances

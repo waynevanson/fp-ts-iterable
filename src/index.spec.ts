@@ -110,6 +110,32 @@ describe("Iterable", () => {
     })
   })
 
+  describe("Chain", () => {
+    test("bindTo", () => {
+      fc.assert(
+        fc.property(
+          fc.integer(),
+          fc
+            .string()
+            .filter((a) => a.length > 0)
+            .chain((a) => fc.string().map((b) => ({ a, b }))),
+          (integer, { a, b }) => {
+            const f = (a: number) => a * 2
+            const result = pipe(
+              iterable.of({ integer }),
+              iterable.bind(a, ({ integer }) => iterable.of(f(integer))),
+              iterable.ToReadonlyArray
+            )
+
+            expect(result).toStrictEqual(
+              readonlyArray.of({ integer, [a]: f(integer) })
+            )
+          }
+        )
+      )
+    })
+  })
+
   describe("NaturalTransformations", () => {
     it("ToReadonlyArray", () => {
       fc.assert(
