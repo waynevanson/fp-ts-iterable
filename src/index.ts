@@ -5,9 +5,10 @@ import { eq } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
+import { Chain1 } from "fp-ts/lib/Chain"
 import { Functor1 } from "fp-ts/lib/Functor"
+import { Monad1 } from "fp-ts/lib/Monad"
 import { Pointed1 } from "fp-ts/lib/Pointed"
-import { Pointed } from "fp-ts/lib/ReadonlyNonEmptyArray"
 
 /**
  * @category Model
@@ -35,6 +36,11 @@ export const of: Pointed1<URI>["of"] = (a) => ({
     yield a
   },
 })
+
+/**
+ * @category Pointed
+ */
+export const Pointed: Pointed1<URI> = { URI, of }
 
 /**
  * @category Functor
@@ -81,6 +87,31 @@ export const Apply: Apply1<URI> = { ...Functor, ap: (fab, fa) => ap(fa)(fab) }
  * @category Instances
  */
 export const Applicative: Applicative1<URI> = { ...Pointed, ...Apply }
+
+/**
+ * @category Chain
+ */
+export const chain =
+  <A1, A2>(f: (a: A1) => Iterable<A2>) =>
+  (fa: Iterable<A1>): Iterable<A2> => ({
+    *[Symbol.iterator]() {
+      for (const a1 of fa) {
+        for (const a2 of f(a1)) {
+          yield a2
+        }
+      }
+    },
+  })
+
+/**
+ * @category Instances
+ */
+export const Chain: Chain1<URI> = { ...Apply, chain: (fa, f) => chain(f)(fa) }
+
+/**
+ * @category Instances
+ */
+export const Monad: Monad1<URI> = { ...Chain, ...Applicative }
 
 /**
  * @category Eq

@@ -38,5 +38,9 @@ describe("Iterable", () => {
         iterable.getEq
       )
     })
+
+    it("Chain", () => {
+      laws.monad(iterable.Monad)(iterable.getEq)
+    })
   })
 })
