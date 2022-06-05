@@ -4,7 +4,9 @@ specifiers:
   '@jest/types': ^28.1.0
   '@types/jest': ^28.1.1
   '@types/node': ^17.0.39
+  fast-check: ^2.6.0
   fp-ts: ^2.12.1
+  fp-ts-laws: ^0.3.0
   husky: ^8.0.1
   jest: ^28.1.0
   lint-staged: ^13.0.0
@@ -22,6 +24,8 @@ devDependencies:
   '@jest/types': 28.1.0
   '@types/jest': 28.1.1
   '@types/node': 17.0.39
+  fast-check: 2.25.0
+  fp-ts-laws: 0.3.0_qt2nmge37wqlgrrv35cim5zhvi
   husky: 8.0.1
   jest: 28.1.0_fnqh7lxo2tirk2pbcjqseislty
   lint-staged: 13.0.0
@@ -1289,6 +1293,13 @@ packages:
       jest-util: 28.1.0
     dev: true
 
+  /fast-check/2.25.0:
+    resolution: {integrity: sha512-wRUT2KD2lAmT75WNIJIHECawoUUMHM0I5jrlLXGtGeqmPL8jl/EldUDjY1VCp6fDY8yflyfUeIOsOBrIbIiArg==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      pure-rand: 5.0.1
+    dev: true
+
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
     dev: true
@@ -1312,6 +1323,16 @@ packages:
     dependencies:
       locate-path: 5.0.0
       path-exists: 4.0.0
+    dev: true
+
+  /fp-ts-laws/0.3.0_qt2nmge37wqlgrrv35cim5zhvi:
+    resolution: {integrity: sha512-uCLBnZq429UDYIx7TDsKmIOXQvgVfEFJMDBbJ2OljpW19cCEF+UgwoGnTfq6AYkHofFlkd6t0p3a9HB1OXTiaA==}
+    peerDependencies:
+      fast-check: ^2.6.0
+      fp-ts: ^2.0.0
+    dependencies:
+      fast-check: 2.25.0
+      fp-ts: 2.12.1
     dev: true
 
   /fp-ts/2.12.1:
@@ -2532,6 +2553,10 @@ packages:
     dependencies:
       kleur: 3.0.3
       sisteransi: 1.0.5
+    dev: true
+
+  /pure-rand/5.0.1:
+    resolution: {integrity: sha512-ksWccjmXOHU2gJBnH0cK1lSYdvSZ0zLoCMSz/nTGh6hDvCSgcRxDyIcOBD6KNxFz3xhMPm/T267Tbe2JRymKEQ==}
     dev: true
 
   /react-is/17.0.2:
