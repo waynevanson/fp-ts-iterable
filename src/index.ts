@@ -148,6 +148,11 @@ export const Chain: Chain1<URI> = { ...Apply, chain: (fa, f) => chain(f)(fa) }
 export const bind = chain_.bind(Chain)
 
 /**
+ * @category Chain
+ */
+export const chainFirst = chain_.chainFirst(Chain)
+
+/**
  * @category Instances
  */
 export const Monad: Monad1<URI> = { ...Chain, ...Applicative }

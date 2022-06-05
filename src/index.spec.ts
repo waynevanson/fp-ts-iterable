@@ -5,13 +5,15 @@ import { readonlyArray, string } from "fp-ts"
 import { pipe } from "fp-ts/lib/function"
 
 describe("Iterable", () => {
-  it("should lift a value into an Iterable", () => {
-    const value = "a"
-    const result = iterable.of(value)
+  describe("Pointed", () => {
+    test("of", () => {
+      const value = "a"
+      const result = iterable.of(value)
 
-    for (const element of result) {
-      expect(element).toStrictEqual(value)
-    }
+      for (const element of result) {
+        expect(element).toStrictEqual(value)
+      }
+    })
   })
 
   describe("Functor", () => {
@@ -132,6 +134,21 @@ describe("Iterable", () => {
             )
           }
         )
+      )
+    })
+
+    test("chainFirst", () => {
+      fc.assert(
+        fc.property(fc.integer(), (integer) => {
+          const fb = iterable.of(integer)
+          const expected = iterable.ToReadonlyArray(fb)
+          const result = pipe(
+            fb,
+            iterable.chainFirst((integer) => iterable.of(integer + 1)),
+            iterable.ToReadonlyArray
+          )
+          expect(result).toStrictEqual(expected)
+        })
       )
     })
   })
