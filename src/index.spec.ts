@@ -2,6 +2,7 @@ import * as iterable from "./index"
 import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
 import { readonlyArray, string } from "fp-ts"
+import { pipe } from "fp-ts/lib/function"
 
 describe("Iterable", () => {
   it("should lift a value into an Iterable", () => {
@@ -11,6 +12,27 @@ describe("Iterable", () => {
     for (const element of result) {
       expect(element).toStrictEqual(value)
     }
+  })
+
+  describe("Functor", () => {
+    test("bindTo", () => {
+      const arbitraries = fc.tuple(
+        fc.anything(),
+        fc.string().filter((a) => a.length > 0)
+      )
+      fc.assert(
+        fc.property(arbitraries, ([anything, property]) => {
+          const result = pipe(
+            iterable.of(anything),
+            iterable.bindTo(property),
+            iterable.ToReadonlyArray
+          )
+          expect(result).toStrictEqual(
+            readonlyArray.of({ [property]: anything })
+          )
+        })
+      )
+    })
   })
 
   describe("Natural Transformations", () => {

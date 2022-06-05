@@ -1,7 +1,7 @@
 /**
  * @since 0.12.0
  */
-import { array, eq, readonlyArray } from "fp-ts"
+import { array, eq, readonlyArray, apply, functor } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
@@ -63,6 +63,11 @@ export const Functor: Functor1<URI> = {
   URI,
   map: (fa, f) => map(f)(fa),
 }
+
+/**
+ * @category Functor
+ */
+export const bindTo = functor.bindTo(Functor)
 
 /**
  * @category Apply
@@ -172,3 +177,5 @@ export const FromReadonlyArray: NaturalTransformation11<
     }
   },
 })
+
+// {skip,take}{,While,WhileMap}{,WithIndex}{,right}
