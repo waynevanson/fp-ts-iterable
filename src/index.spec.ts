@@ -69,9 +69,28 @@ describe("Iterable", () => {
         })
       )
     })
+
+    test("apSecond", () => {
+      fc.assert(
+        fc.property(fc.integer(), fc.string(), (integer, string) => {
+          const fa = iterable.of(integer)
+          const fb = iterable.of(string)
+
+          const expected = iterable.ToReadonlyArray(fb)
+
+          const result = pipe(
+            fa,
+            iterable.apSecond(fb),
+            iterable.ToReadonlyArray
+          )
+
+          expect(result).toStrictEqual(expected)
+        })
+      )
+    })
   })
 
-  describe("Natural Transformations", () => {
+  describe("NaturalTransformations", () => {
     it("ToReadonlyArray", () => {
       fc.assert(
         fc.property(fc.anything(), (anything) => {

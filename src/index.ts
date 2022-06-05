@@ -94,7 +94,15 @@ export const ap =
  */
 export const Apply: Apply1<URI> = { ...Functor, ap: (fab, fa) => ap(fa)(fab) }
 
+/**
+ * @category Apply
+ */
 export const apFirst = apply.apFirst(Apply)
+
+/**
+ * @category Apply
+ */
+export const apSecond = apply.apSecond(Apply)
 
 /**
  * @category Instances
