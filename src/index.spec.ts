@@ -153,7 +153,7 @@ describe("Iterable", () => {
     })
   })
 
-  describe("NaturalTransformations", () => {
+  describe("NaturalTransformation", () => {
     it("ToReadonlyArray", () => {
       fc.assert(
         fc.property(fc.anything(), (anything) => {
@@ -175,6 +175,30 @@ describe("Iterable", () => {
         })
       )
     })
+  })
+
+  describe("Skippable", () => {
+    test.todo("skip")
+    test.todo("skipWhile")
+    test.todo("skipWhileMap")
+    test.todo("skipWhileMapWithIndex")
+
+    test.todo("skipRight")
+    test.todo("skipWhileRight")
+    test.todo("skipWhileMapRight")
+    test.todo("skipWhileMapWithIndexRight")
+  })
+
+  describe("Takeable", () => {
+    test.todo("take")
+    test.todo("takeWhile")
+    test.todo("takeWhileMap")
+    test.todo("takeWhileMapWithIndex")
+
+    test.todo("takeRight")
+    test.todo("takeWhileRight")
+    test.todo("takeWhileMapRight")
+    test.todo("takeWhileMapWithIndexRight")
   })
 
   describe("laws", () => {
