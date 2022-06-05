@@ -1,13 +1,14 @@
 /**
  * @since 0.12.0
  */
-import { eq } from "fp-ts"
+import { array, eq, readonlyArray } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
 import { Chain1 } from "fp-ts/lib/Chain"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { Monad1 } from "fp-ts/lib/Monad"
+import { NaturalTransformation11 } from "fp-ts/lib/NaturalTransformation"
 import { Pointed1 } from "fp-ts/lib/Pointed"
 
 /**
@@ -147,3 +148,16 @@ export const getEq = <A>(eqa: eq.Eq<A>): eq.Eq<Iterable<A>> =>
       continue
     }
   })
+
+export const ToReadonlyArray: NaturalTransformation11<
+  URI,
+  readonlyArray.URI
+> = (ax) => {
+  const result = []
+
+  for (const a of ax) {
+    result.push(a)
+  }
+
+  return result
+}

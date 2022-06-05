@@ -1,7 +1,7 @@
 import * as iterable from "./index"
 import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
-import { string } from "fp-ts"
+import { readonlyArray, string } from "fp-ts"
 
 describe("Iterable", () => {
   it("should lift a value into an Iterable", () => {
@@ -11,6 +11,18 @@ describe("Iterable", () => {
     for (const element of result) {
       expect(element).toStrictEqual(value)
     }
+  })
+
+  describe("Natural Transformations", () => {
+    it("ToReadonlyArray", () => {
+      fc.assert(
+        fc.property(fc.anything(), (anything) => {
+          const inputs = iterable.of(anything)
+          const result = iterable.ToReadonlyArray(inputs)
+          expect(result).toStrictEqual(readonlyArray.of(anything))
+        })
+      )
+    })
   })
 
   describe("laws", () => {
