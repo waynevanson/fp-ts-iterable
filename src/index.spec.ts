@@ -50,6 +50,27 @@ describe("Iterable", () => {
     })
   })
 
+  describe("Apply", () => {
+    test("apFirst", () => {
+      fc.assert(
+        fc.property(fc.integer(), fc.string(), (integer, string) => {
+          const fa = iterable.of(integer)
+          const fb = iterable.of(string)
+
+          const expected = iterable.ToReadonlyArray(fa)
+
+          const result = pipe(
+            fa,
+            iterable.apFirst(fb),
+            iterable.ToReadonlyArray
+          )
+
+          expect(result).toStrictEqual(expected)
+        })
+      )
+    })
+  })
+
   describe("Natural Transformations", () => {
     it("ToReadonlyArray", () => {
       fc.assert(
