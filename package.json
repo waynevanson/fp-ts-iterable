@@ -1,0 +1,26 @@
+{
+  "name": "fp-ts-iterable",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/cjs/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && run-p build:*",
+    "build:cjs": "tsc --outDir dist/cjs --target es5 --module commonjs ",
+    "build:esm": "tsc --outDir dist/esm --target es6 --module es6",
+    "build:types": "tsc --outDir dist/types --declaration --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "fp-ts": "^2.12.1"
+  },
+  "devDependencies": {
+    "@jest/types": "^28.1.0",
+    "@types/jest": "^28.1.1",
+    "@types/node": "^17.0.39",
+    "jest": "^28.1.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.4",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  }
+}
