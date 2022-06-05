@@ -24,5 +24,12 @@ describe("Iterable", () => {
         iterable.getEq
       )
     })
+
+    it("apply", () => {
+      laws.apply(iterable.Apply)(
+        (arbitrary) => arbitrary.map(iterable.of),
+        iterable.getEq
+      )
+    })
   })
 })
