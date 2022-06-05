@@ -88,6 +88,26 @@ describe("Iterable", () => {
         })
       )
     })
+
+    test("apS", () => {
+      fc.assert(
+        fc.property(
+          fc.integer(),
+          fc.string().filter((a) => a.length > 0),
+          (integer, property) => {
+            const result = pipe(
+              iterable.of({}),
+              iterable.apS(property, iterable.of(integer)),
+              iterable.ToReadonlyArray
+            )
+
+            expect(result).toStrictEqual(
+              readonlyArray.of({ [property]: integer })
+            )
+          }
+        )
+      )
+    })
   })
 
   describe("NaturalTransformations", () => {

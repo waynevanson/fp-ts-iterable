@@ -1,7 +1,7 @@
 /**
  * @since 0.12.0
  */
-import { array, eq, readonlyArray, apply, functor } from "fp-ts"
+import { array, eq, readonlyArray, apply, functor, pointed } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
@@ -103,6 +103,11 @@ export const apFirst = apply.apFirst(Apply)
  * @category Apply
  */
 export const apSecond = apply.apSecond(Apply)
+
+/**
+ * @category Apply
+ */
+export const apS = apply.apS(Apply)
 
 /**
  * @category Instances
