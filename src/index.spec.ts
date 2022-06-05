@@ -14,8 +14,15 @@ describe("Iterable", () => {
   })
 
   describe("laws", () => {
-    it("eq", () => {
+    it("Eq", () => {
       laws.eq(iterable.getEq(string.Eq), fc.string())
+    })
+
+    it("Functor", () => {
+      laws.functor(iterable.Functor)(
+        (arbitrary) => arbitrary.map(iterable.of),
+        iterable.getEq
+      )
     })
   })
 })
