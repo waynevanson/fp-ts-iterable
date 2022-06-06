@@ -3,8 +3,6 @@ import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
 import { option, readonlyArray, string } from "fp-ts"
 import { pipe } from "fp-ts/lib/function"
-import { pre } from "fast-check"
-import exp from "constants"
 
 describe("Iterable", () => {
   describe("Pointed", () => {
