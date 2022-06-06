@@ -33,7 +33,8 @@
     "typescript": "^4.7.3"
   },
   "lint-staged": {
-    "*.ts": "jest -o --passWithNoTests"
+    "*.ts": "jest -o --passWithNoTests",
+    "*!(.spec).ts": "docs-ts"
   },
   "husky": {}
 }

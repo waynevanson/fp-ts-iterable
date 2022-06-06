@@ -181,6 +181,7 @@ describe("Iterable", () => {
     test.todo("skip")
     test.todo("skipWhile")
     test.todo("skipWhileMap")
+
     test("skipWhileMapWithIndex", () => {
       const predicate = (a: number) => a > 0
 
@@ -199,6 +200,7 @@ describe("Iterable", () => {
             ),
             iterable.ToReadonlyArray
           )
+
           expect(result).toStrictEqual(expected.rest)
         })
       )

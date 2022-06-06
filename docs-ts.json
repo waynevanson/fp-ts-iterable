@@ -1,0 +1,4 @@
+{
+  "enforceVersion": false,
+  "exclude": ["**/*.spec.ts"]
+}
