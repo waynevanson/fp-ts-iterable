@@ -7,8 +7,8 @@ import {
   readonlyArray,
   apply,
   functor,
-  pointed,
   chain as chain_,
+  option,
 } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
@@ -217,3 +217,35 @@ export const FromReadonlyArray: NaturalTransformation11<
 })
 
 // {skip,take}{,While,WhileMap}{,WithIndex}{,right}
+
+export const skipWhileMapWithIndex =
+  <A1, A2>(f: (index: number, a: A1) => option.Option<A2>) =>
+  (fa: Iterable<A1>): Iterable<A1> => ({
+    *[Symbol.iterator]() {
+      let i = 0
+      const iterator = fa[Symbol.iterator]()
+
+      while (true) {
+        const result = iterator.next()
+
+        if (result.done) {
+          return
+        }
+
+        if (option.isNone(f(i++, result.value))) {
+          yield result.value
+          break
+        }
+      }
+
+      while (true) {
+        const result = iterator.next()
+
+        if (result.done) {
+          return
+        }
+
+        yield result.value
+      }
+    },
+  })

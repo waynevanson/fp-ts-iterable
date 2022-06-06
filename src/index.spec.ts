@@ -1,8 +1,10 @@
 import * as iterable from "./index"
 import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
-import { readonlyArray, string } from "fp-ts"
+import { option, readonlyArray, string } from "fp-ts"
 import { pipe } from "fp-ts/lib/function"
+import { pre } from "fast-check"
+import exp from "constants"
 
 describe("Iterable", () => {
   describe("Pointed", () => {
@@ -181,7 +183,28 @@ describe("Iterable", () => {
     test.todo("skip")
     test.todo("skipWhile")
     test.todo("skipWhileMap")
-    test.todo("skipWhileMapWithIndex")
+    test("skipWhileMapWithIndex", () => {
+      const predicate = (a: number) => a > 0
+
+      fc.assert(
+        fc.property(fc.array(fc.integer()), (integers) => {
+          const expected = pipe(
+            integers,
+            readonlyArray.fromArray,
+            readonlyArray.spanLeft(predicate)
+          )
+
+          const result = pipe(
+            iterable.FromReadonlyArray(integers),
+            iterable.skipWhileMapWithIndex((i, a) =>
+              option.fromPredicate(predicate)(a)
+            ),
+            iterable.ToReadonlyArray
+          )
+          expect(result).toStrictEqual(expected.rest)
+        })
+      )
+    })
 
     test.todo("skipRight")
     test.todo("skipWhileRight")
