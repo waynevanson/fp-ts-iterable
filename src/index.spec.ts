@@ -220,7 +220,6 @@ describe("Iterable", () => {
 
   describe("Skippable", () => {
     test.todo("skip")
-    test.todo("skipWithIndex")
 
     test("skipWhile", () => {
       const predicate = (a: number) => a > 0
@@ -244,28 +243,6 @@ describe("Iterable", () => {
       )
     })
 
-    test("skipWhileWithIndex", () => {
-      const predicate = (a: number) => a > 0
-
-      fc.assert(
-        fc.property(fc.array(fc.integer()), (integers) => {
-          const expected = pipe(
-            integers,
-            readonlyArray.fromArray,
-            readonlyArray.spanLeft(predicate)
-          )
-
-          const result = pipe(
-            iterable.FromReadonlyArray(integers),
-            iterable.skipWhileWithIndex((i, a) => predicate(a)),
-            iterable.ToReadonlyArray
-          )
-
-          expect(result).toStrictEqual(expected.rest)
-        })
-      )
-    })
-
     test("skipWhileMap", () => {
       const predicate = (a: number) => a > 0
 
@@ -280,6 +257,36 @@ describe("Iterable", () => {
           const result = pipe(
             iterable.FromReadonlyArray(integers),
             iterable.skipWhileMap(option.fromPredicate(predicate)),
+            iterable.ToReadonlyArray
+          )
+
+          expect(result).toStrictEqual(expected.rest)
+        })
+      )
+    })
+
+    test.todo("skipRight")
+    test.todo("skipWhileRight")
+    test.todo("skipWhileMapRight")
+  })
+
+  describe("SkippableWithIndex", () => {
+    test.todo("skipWithIndex")
+
+    test("skipWhileWithIndex", () => {
+      const predicate = (a: number) => a > 0
+
+      fc.assert(
+        fc.property(fc.array(fc.integer()), (integers) => {
+          const expected = pipe(
+            integers,
+            readonlyArray.fromArray,
+            readonlyArray.spanLeft(predicate)
+          )
+
+          const result = pipe(
+            iterable.FromReadonlyArray(integers),
+            iterable.skipWhileWithIndex((i, a) => predicate(a)),
             iterable.ToReadonlyArray
           )
 
@@ -312,29 +319,29 @@ describe("Iterable", () => {
       )
     })
 
-    test.todo("skipRight")
     test.todo("skipRightWithIndex")
-    test.todo("skipWhileRight")
-    test.todo("skipWhileRightWithIndex")
-    test.todo("skipWhileMapRight")
-    test.todo("skipWhileMapWithIndexRight")
+    test.todo("skipRightWhileWithIndex")
+    test.todo("skipRightWhileMapWithIndex")
+  })
+
+  describe("TakeableWithIndex", () => {
+    test.todo("takeWithIndex")
+    test.todo("takeWhileWithIndex")
+    test.todo("takeWhileMapWithIndex")
+
+    test.todo("takeRightWithIndex")
+    test.todo("takeRightWhileWithIndex")
+    test.todo("takeRightWhileMapWithIndex")
   })
 
   describe("Takeable", () => {
     test.todo("take")
-    test.todo("takeWithIndex")
     test.todo("takeWhile")
-    test.todo("takeWhileWithIndex")
     test.todo("takeWhileMap")
-    test.todo("takeWhileMapWithIndex")
 
     test.todo("takeRight")
-    test.todo("takeRightWithIndex")
-    test.todo("takeWhileRight")
-    test.todo("takeWhileRightWithIndex")
-    test.todo("takeWhileMapRight")
-    test.todo("takeWhileMapRightWithIndex")
-    test.todo("takeWhileMapWithIndexRight")
+    test.todo("takeRightWhile")
+    test.todo("takeRightWhileMap")
   })
 
   describe("laws", () => {
