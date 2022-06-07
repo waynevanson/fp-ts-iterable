@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/waynevanson/fp-ts-iterable/compare/v1.0.0...v1.1.0) (2022-06-07)
+
+
+### Features
+
+* add `skipWhileMap` ([3cfbf87](https://github.com/waynevanson/fp-ts-iterable/commit/3cfbf875faf5247e0a134ef78446086dd3579bec))
+
 ## 1.0.0 (2022-06-07)
 
 
