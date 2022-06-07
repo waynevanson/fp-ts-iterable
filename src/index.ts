@@ -192,6 +192,9 @@ export const getEq = <A>(eqa: eq.Eq<A>): eq.Eq<Iterable<A>> =>
     }
   })
 
+/**
+ * @category NaturalTransformation
+ */
 export const ToReadonlyArray: NaturalTransformation11<
   URI,
   readonlyArray.URI
@@ -205,6 +208,9 @@ export const ToReadonlyArray: NaturalTransformation11<
   return result
 }
 
+/**
+ * @category NaturalTransformation
+ */
 export const FromReadonlyArray: NaturalTransformation11<
   readonlyArray.URI,
   URI
@@ -218,6 +224,9 @@ export const FromReadonlyArray: NaturalTransformation11<
 
 // {skip,take}{,While,WhileMap}{,WithIndex}{,right}
 
+/**
+ * @category Combinators
+ */
 export const skipWhileMapWithIndex =
   <A1, A2>(f: (index: number, a: A1) => option.Option<A2>) =>
   (fa: Iterable<A1>): Iterable<A1> => ({
@@ -249,3 +258,9 @@ export const skipWhileMapWithIndex =
       }
     },
   })
+
+/**
+ * @category Combinators
+ */
+export const skipWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
+  skipWhileMapWithIndex((i, a: A1) => f(a))
