@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.2.0 (2022-06-07)
+
+
+### Features
+
+* add `skipWhile` ([1c944af](https://github.com/waynevanson/fp-ts-iterable/commit/1c944afddaccdec68a1e3497ef6298eb0542fffe))
+
 ### [1.1.1](https://github.com/waynevanson/fp-ts-iterable/compare/v1.1.0...v1.1.1) (2022-06-07)
 
 ## [1.1.0](https://github.com/waynevanson/fp-ts-iterable/compare/v1.0.0...v1.1.0) (2022-06-07)
