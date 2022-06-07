@@ -14,6 +14,11 @@ import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
 import { Chain1 } from "fp-ts/lib/Chain"
+import {
+  PredicateWithIndex,
+  RefinementWithIndex,
+} from "fp-ts/lib/FilterableWithIndex"
+import { pipe } from "fp-ts/lib/function"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { Monad1 } from "fp-ts/lib/Monad"
 import { NaturalTransformation11 } from "fp-ts/lib/NaturalTransformation"
@@ -264,3 +269,16 @@ export const skipWhileMapWithIndex =
  */
 export const skipWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
   skipWhileMapWithIndex((i, a: A1) => f(a))
+
+/**
+ * @category Combinators
+ */
+export const skipWhileWithIndex = <A1, A2 extends A1>(
+  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
+) =>
+  skipWhileMapWithIndex((i, a: A1) =>
+    pipe(
+      a,
+      option.fromPredicate((a) => f(i, a))
+    )
+  )

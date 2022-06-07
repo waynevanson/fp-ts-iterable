@@ -182,6 +182,28 @@ describe("Iterable", () => {
     test.todo("skipWithIndex")
     test.todo("skipWhile")
 
+    test("skipWhileWithIndex", () => {
+      const predicate = (a: number) => a > 0
+
+      fc.assert(
+        fc.property(fc.array(fc.integer()), (integers) => {
+          const expected = pipe(
+            integers,
+            readonlyArray.fromArray,
+            readonlyArray.spanLeft(predicate)
+          )
+
+          const result = pipe(
+            iterable.FromReadonlyArray(integers),
+            iterable.skipWhileWithIndex((i, a) => predicate(a)),
+            iterable.ToReadonlyArray
+          )
+
+          expect(result).toStrictEqual(expected.rest)
+        })
+      )
+    })
+
     test("skipWhileMap", () => {
       const predicate = (a: number) => a > 0
 
