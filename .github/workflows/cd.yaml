@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: 16
           cache: pnpm
+          registry-url: "https://registry.npmjs.org"
 
       - run: pnpm install --frozen-lockfile
 
@@ -33,7 +34,7 @@ jobs:
 
       - run: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # assume this was tested during tests
       - name: Publish Docs
