@@ -29,13 +29,12 @@ jobs:
       - run: |
           git add --force docs/
           git commit -m 'chore: update docs [skip ci]'
+          git push
 
-      - run: git push
-
-      # - uses: google-github-actions/release-please-action@v3
-      #   with:
-      #     release-type: node
-      #     package-name: fp-ts-iterable
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: fp-ts-iterable
 # gen docs, push to git via force, gen versioning,
 # release to github, npm, with pre validation
 # add tokens
