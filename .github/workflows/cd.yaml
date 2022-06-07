@@ -28,7 +28,8 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm exec standard-version
+      - name: Create Version
+        run: pnpm exec standard-version
 
       - run: pnpm publish
         env:
