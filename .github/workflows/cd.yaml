@@ -1,0 +1,37 @@
+name: Continuous Deployment
+
+on:
+  workflow_run:
+    workflows: [Continuous Integration]
+    types: [completed]
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm exec docs-ts
+
+      - run: |
+          git add --force docs/
+          git commit -m 'chore: update docs [skip ci]'
+
+      - run: git push
+
+      # - uses: google-github-actions/release-please-action@v3
+      #   with:
+      #     release-type: node
+      #     package-name: fp-ts-iterable
+# gen docs, push to git via force, gen versioning,
+# release to github, npm, with pre validation
+# add tokens
+
