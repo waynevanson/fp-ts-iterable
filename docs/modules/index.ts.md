@@ -22,8 +22,10 @@ Added in v0.12.0
   - [chain](#chain)
   - [chainFirst](#chainfirst)
 - [Combinators](#combinators)
+  - [skipWhile](#skipwhile)
   - [skipWhileMap](#skipwhilemap)
   - [skipWhileMapWithIndex](#skipwhilemapwithindex)
+  - [skipWhileWithIndex](#skipwhilewithindex)
 - [Eq](#eq)
   - [getEq](#geteq)
 - [Functor](#functor)
@@ -116,6 +118,16 @@ export declare const chainFirst: <A, B>(f: (a: A) => Iterable<B>) => (first: Ite
 
 # Combinators
 
+## skipWhile
+
+**Signature**
+
+```ts
+export declare const skipWhile: <A1, A2 extends A1>(
+  f: Predicate<A1> | Refinement<A1, A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
 ## skipWhileMap
 
 **Signature**
@@ -131,6 +143,16 @@ export declare const skipWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => 
 ```ts
 export declare const skipWhileMapWithIndex: <A1, A2>(
   f: (index: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipWhileWithIndex
+
+**Signature**
+
+```ts
+export declare const skipWhileWithIndex: <A1, A2 extends A1>(
+  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
 ) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 

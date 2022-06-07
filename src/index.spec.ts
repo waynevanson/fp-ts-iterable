@@ -153,6 +153,47 @@ describe("Iterable", () => {
     })
   })
 
+  describe("Compactable", () => {
+    test.todo("compact")
+    test.todo("seperate")
+  })
+
+  describe("Filterable", () => {
+    test.todo("filter")
+    test.todo("filterMap")
+    test.todo("partition")
+    test.todo("partitionMap")
+  })
+
+  describe("FilterableWithIndex", () => {
+    test.todo("filterWithIndex")
+    test.todo("filterMapWithIndex")
+    test.todo("partitionWithIndex")
+    test.todo("partitionMapWithIndex")
+  })
+
+  describe("Foldable", () => {
+    test.todo("reduce")
+    test.todo("foldMap")
+    test.todo("reduceRight")
+  })
+
+  describe("FoldableWithIndex", () => {
+    test.todo("reduceWithIndex")
+    test.todo("foldMapWithIndex")
+    test.todo("reduceRightWithIndex")
+  })
+
+  describe("Traversable", () => {
+    test.todo("traverse")
+    test.todo("sequence")
+  })
+
+  describe("TraversableWithIndex", () => {
+    test.todo("traverseWithIndex")
+    test.todo("sequenceWithIndex")
+  })
+
   describe("NaturalTransformation", () => {
     it("ToReadonlyArray", () => {
       fc.assert(
