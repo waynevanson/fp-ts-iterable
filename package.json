@@ -36,5 +36,6 @@
     "*.ts": "jest -o --passWithNoTests",
     "*!(.spec).ts": "docs-ts"
   },
-  "husky": {}
+  "husky": {},
+  "version": "1.0.0"
 }
