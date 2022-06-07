@@ -23,6 +23,8 @@ import { Functor1 } from "fp-ts/lib/Functor"
 import { Monad1 } from "fp-ts/lib/Monad"
 import { NaturalTransformation11 } from "fp-ts/lib/NaturalTransformation"
 import { Pointed1 } from "fp-ts/lib/Pointed"
+import { Predicate } from "fp-ts/lib/Predicate"
+import { Refinement } from "fp-ts/lib/Refinement"
 
 /**
  * @category Model
@@ -282,3 +284,10 @@ export const skipWhileWithIndex = <A1, A2 extends A1>(
       option.fromPredicate((a) => f(i, a))
     )
   )
+
+/**
+ * @category Combinators
+ */
+export const skipWhile = <A1, A2 extends A1>(
+  f: Predicate<A1> | Refinement<A1, A2>
+) => skipWhileWithIndex((i, a: A1) => f(a))
