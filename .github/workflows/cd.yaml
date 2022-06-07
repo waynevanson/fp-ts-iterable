@@ -28,7 +28,7 @@ jobs:
 
       - run: |
           git add --force docs/
-          git commit -m 'chore: update docs [skip ci]'
+          git commit -m 'chore: update docs [skip ci]' || true
           git push
 
       - uses: google-github-actions/release-please-action@v3
