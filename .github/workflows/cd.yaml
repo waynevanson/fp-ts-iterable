@@ -10,6 +10,10 @@ jobs:
   cd:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          git config --global user.name "Wayne Van Bot"
+          git config --global user.email "waynevanson@gmail.com"
+
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
