@@ -4,6 +4,9 @@
   "module": "dist/cjs/index.mjs",
   "types": "dist/types/index.d.ts",
   "homepage": "https://waynevanson.github.io/fp-ts-iterable",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf dist && run-p build:*",
     "build:cjs": "tsc --outDir dist/cjs --target es5 --module commonjs ",
