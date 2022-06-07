@@ -153,6 +153,10 @@ describe("Iterable", () => {
     })
   })
 
+  describe("Alt", () => {})
+
+  describe("Alternative", () => {})
+
   describe("Compactable", () => {
     test.todo("compact")
     test.todo("seperate")
