@@ -24,7 +24,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 16
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
@@ -35,8 +35,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - run: |
+      # assume this was tested during tests
+      - name: Publish Docs
+        run: |
           pnpm exec docs-ts
           git add --force docs/
           git commit -m 'chore: update docs [skip ci]' || true
-          git push
+          git push --tags
