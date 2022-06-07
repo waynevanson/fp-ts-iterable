@@ -14,7 +14,6 @@ jobs:
         run: |
           git config --global user.name "Wayne Van Son (Bot)"
           git config --global user.email "waynevanson@gmail.com"
-        if: ${{ steps.release.outputs.release_created }}
 
       - uses: actions/checkout@v3
 
