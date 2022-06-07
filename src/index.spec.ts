@@ -112,6 +112,10 @@ describe("Iterable", () => {
     })
   })
 
+  describe("Applicative", () => {
+    test.todo("getApplicativeMonoid")
+  })
+
   describe("Chain", () => {
     test("bindTo", () => {
       fc.assert(
@@ -153,9 +157,22 @@ describe("Iterable", () => {
     })
   })
 
-  describe("Alt", () => {})
+  describe("ChainRec", () => {
+    test.todo("chainRec")
+  })
 
-  describe("Alternative", () => {})
+  describe("Alt", () => {
+    test.todo("altAll")
+  })
+
+  describe("Zero", () => {
+    test.todo("zero")
+    test.todo("guard")
+  })
+
+  describe("Alternative", () => {
+    test.todo("empty")
+  })
 
   describe("Compactable", () => {
     test.todo("compact")
@@ -220,6 +237,8 @@ describe("Iterable", () => {
         })
       )
     })
+
+    test.todo("FromAsyncIterable")
   })
 
   describe("Skippable", () => {
