@@ -35,6 +35,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
 
       - run: pnpm install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
 
       - run: pnpm publish
         env:

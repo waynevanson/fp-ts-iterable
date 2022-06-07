@@ -21,6 +21,9 @@ Added in v0.12.0
   - [bind](#bind)
   - [chain](#chain)
   - [chainFirst](#chainfirst)
+- [Combinators](#combinators)
+  - [skipWhileMap](#skipwhilemap)
+  - [skipWhileMapWithIndex](#skipwhilemapwithindex)
 - [Eq](#eq)
   - [getEq](#geteq)
 - [Functor](#functor)
@@ -36,13 +39,12 @@ Added in v0.12.0
 - [Model](#model)
   - [URI](#uri)
   - [URI (type alias)](#uri-type-alias)
+- [NaturalTransformation](#naturaltransformation)
+  - [FromReadonlyArray](#fromreadonlyarray)
+  - [ToReadonlyArray](#toreadonlyarray)
 - [Pointed](#pointed)
   - [Pointed](#pointed-1)
   - [of](#of)
-- [utils](#utils)
-  - [FromReadonlyArray](#fromreadonlyarray)
-  - [ToReadonlyArray](#toreadonlyarray)
-  - [skipWhileMapWithIndex](#skipwhilemapwithindex)
 
 ---
 
@@ -110,6 +112,26 @@ export declare const chain: <A1, A2>(f: (a: A1) => Iterable<A2>) => (fa: Iterabl
 
 ```ts
 export declare const chainFirst: <A, B>(f: (a: A) => Iterable<B>) => (first: Iterable<A>) => Iterable<A>
+```
+
+# Combinators
+
+## skipWhileMap
+
+**Signature**
+
+```ts
+export declare const skipWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipWhileMapWithIndex
+
+**Signature**
+
+```ts
+export declare const skipWhileMapWithIndex: <A1, A2>(
+  f: (index: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 
 # Eq
@@ -212,25 +234,7 @@ export type URI = typeof URI
 
 Added in v0.12.0
 
-# Pointed
-
-## Pointed
-
-**Signature**
-
-```ts
-export declare const Pointed: Pointed1<'Iterable'>
-```
-
-## of
-
-**Signature**
-
-```ts
-export declare const of: <A>(a: A) => Iterable<A>
-```
-
-# utils
+# NaturalTransformation
 
 ## FromReadonlyArray
 
@@ -248,12 +252,20 @@ export declare const FromReadonlyArray: NaturalTransformation11<'ReadonlyArray',
 export declare const ToReadonlyArray: NaturalTransformation11<'Iterable', 'ReadonlyArray'>
 ```
 
-## skipWhileMapWithIndex
+# Pointed
+
+## Pointed
 
 **Signature**
 
 ```ts
-export declare const skipWhileMapWithIndex: <A1, A2>(
-  f: (index: number, a: A1) => option.Option<A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
+export declare const Pointed: Pointed1<'Iterable'>
+```
+
+## of
+
+**Signature**
+
+```ts
+export declare const of: <A>(a: A) => Iterable<A>
 ```
