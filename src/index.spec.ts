@@ -179,6 +179,7 @@ describe("Iterable", () => {
 
   describe("Skippable", () => {
     test.todo("skip")
+    test.todo("skipWithIndex")
     test.todo("skipWhile")
 
     test("skipWhileMap", () => {
@@ -228,20 +229,27 @@ describe("Iterable", () => {
     })
 
     test.todo("skipRight")
+    test.todo("skipRightWithIndex")
     test.todo("skipWhileRight")
+    test.todo("skipWhileRightWithIndex")
     test.todo("skipWhileMapRight")
     test.todo("skipWhileMapWithIndexRight")
   })
 
   describe("Takeable", () => {
     test.todo("take")
+    test.todo("takeWithIndex")
     test.todo("takeWhile")
+    test.todo("takeWhileWithIndex")
     test.todo("takeWhileMap")
     test.todo("takeWhileMapWithIndex")
 
     test.todo("takeRight")
+    test.todo("takeRightWithIndex")
     test.todo("takeWhileRight")
+    test.todo("takeWhileRightWithIndex")
     test.todo("takeWhileMapRight")
+    test.todo("takeWhileMapRightWithIndex")
     test.todo("takeWhileMapWithIndexRight")
   })
 
