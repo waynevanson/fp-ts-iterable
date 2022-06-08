@@ -22,6 +22,7 @@ import {
 } from "fp-ts/lib/FilterableWithIndex"
 import { pipe } from "fp-ts/lib/function"
 import { Functor1 } from "fp-ts/lib/Functor"
+import { FunctorWithIndex1 } from "fp-ts/lib/FunctorWithIndex"
 import { Monad1 } from "fp-ts/lib/Monad"
 import { NaturalTransformation11 } from "fp-ts/lib/NaturalTransformation"
 import { Pointed1 } from "fp-ts/lib/Pointed"
@@ -93,6 +94,12 @@ export const map =
 export const Functor: Functor1<URI> = {
   URI,
   map: (fa, f) => map(f)(fa),
+}
+
+/* istanbul ignore next */
+export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
+  ...Functor,
+  mapWithIndex: (fa, f) => mapWithIndex(f)(fa),
 }
 
 /**
