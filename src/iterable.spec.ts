@@ -2,7 +2,7 @@ import * as iterable from "./iterable"
 import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
 import { option, readonlyArray, string } from "fp-ts"
-import { pipe } from "fp-ts/lib/function"
+import { flow, pipe, tuple } from "fp-ts/lib/function"
 
 describe("Iterable", () => {
   describe("Pointed", () => {
@@ -72,7 +72,23 @@ describe("Iterable", () => {
   })
 
   describe("Unfoldable", () => {
-    test.todo("unfold")
+    test("unfold", () => {
+      fc.assert(
+        fc.property(fc.integer({ min: 0, max: 100 }), (integer) => {
+          const result = pipe(
+            iterable.unfold(
+              integer,
+              flow(
+                option.fromPredicate((integer) => integer > 0),
+                option.map((integer) => tuple(integer, integer - 1))
+              )
+            ),
+            iterable.ToReadonlyArray
+          )
+          expect(result.length).toBe(integer)
+        })
+      )
+    })
   })
 
   describe("Witherable", () => {

@@ -28,6 +28,7 @@ import { NaturalTransformation11 } from "fp-ts/lib/NaturalTransformation"
 import { Pointed1 } from "fp-ts/lib/Pointed"
 import { Predicate } from "fp-ts/lib/Predicate"
 import { Refinement } from "fp-ts/lib/Refinement"
+import { Unfoldable, Unfoldable1 } from "fp-ts/lib/Unfoldable"
 
 /**
  * @category Model
@@ -323,3 +324,17 @@ export const skip =
         (i) => i < ord.clamp(number.Ord)(0, Number.MAX_SAFE_INTEGER)(count)
       )
     )
+
+export const unfold: Unfoldable1<URI>["unfold"] = (b, f) => ({
+  *[Symbol.iterator]() {
+    let b_ = b
+    while (true) {
+      const oa = f(b_)
+      if (option.isNone(oa)) break
+
+      const [a, b] = oa.value
+      b_ = b
+      yield a
+    }
+  },
+})
