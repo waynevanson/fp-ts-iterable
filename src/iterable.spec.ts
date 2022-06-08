@@ -1,4 +1,4 @@
-import * as iterable from "./index"
+import * as iterable from "./iterable"
 import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
 import { option, readonlyArray, string } from "fp-ts"
