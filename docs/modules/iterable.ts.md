@@ -33,11 +33,13 @@ Added in v0.12.0
   - [bindTo](#bindto)
   - [flap](#flap)
   - [map](#map)
+  - [mapWithIndex](#mapwithindex)
 - [Instances](#instances)
   - [Applicative](#applicative)
   - [Apply](#apply-1)
   - [Chain](#chain-1)
   - [Functor](#functor-1)
+  - [FunctorWithIndex](#functorwithindex)
   - [Monad](#monad)
 - [Model](#model)
   - [URI](#uri)
@@ -48,6 +50,9 @@ Added in v0.12.0
 - [Pointed](#pointed)
   - [Pointed](#pointed-1)
   - [of](#of)
+- [utils](#utils)
+  - [Unfoldable](#unfoldable)
+  - [unfold](#unfold)
 
 ---
 
@@ -201,6 +206,14 @@ export declare const flap: <A>(a: A) => <B>(fab: Iterable<(a: A) => B>) => Itera
 export declare const map: <A1, A2>(f: (a: A1) => A2) => (fa: Iterable<A1>) => Iterable<A2>
 ```
 
+## mapWithIndex
+
+**Signature**
+
+```ts
+export declare const mapWithIndex: <A1, A2>(f: (index: number, a: A1) => A2) => (fa: Iterable<A1>) => Iterable<A2>
+```
+
 # Instances
 
 ## Applicative
@@ -233,6 +246,14 @@ export declare const Chain: chain_.Chain1<'Iterable'>
 
 ```ts
 export declare const Functor: functor.Functor1<'Iterable'>
+```
+
+## FunctorWithIndex
+
+**Signature**
+
+```ts
+export declare const FunctorWithIndex: FunctorWithIndex1<'Iterable', number>
 ```
 
 ## Monad
@@ -299,4 +320,22 @@ export declare const Pointed: Pointed1<'Iterable'>
 
 ```ts
 export declare const of: <A>(a: A) => Iterable<A>
+```
+
+# utils
+
+## Unfoldable
+
+**Signature**
+
+```ts
+export declare const Unfoldable: Unfoldable1<'Iterable'>
+```
+
+## unfold
+
+**Signature**
+
+```ts
+export declare const unfold: <A, B>(b: B, f: (b: B) => option.Option<[A, B]>) => Iterable<A>
 ```

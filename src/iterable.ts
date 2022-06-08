@@ -325,6 +325,9 @@ export const skip =
       )
     )
 
+/**
+ * @category Unfoldable
+ */
 export const unfold: Unfoldable1<URI>["unfold"] = (b, f) => ({
   *[Symbol.iterator]() {
     let b_ = b
@@ -339,4 +342,7 @@ export const unfold: Unfoldable1<URI>["unfold"] = (b, f) => ({
   },
 })
 
+/**
+ * @category Instances
+ */
 export const Unfoldable: Unfoldable1<URI> = { URI, unfold }
