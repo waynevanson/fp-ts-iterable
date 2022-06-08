@@ -90,6 +90,9 @@ export const Functor: Functor1<URI> = {
 }
 
 /* istanbul ignore next */
+/**
+ * @category Instances
+ */
 export const FunctorWithIndex: FunctorWithIndex1<URI, number> = {
   ...Functor,
   mapWithIndex: (fa, f) => mapWithIndex(f)(fa),
