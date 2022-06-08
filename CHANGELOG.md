@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/waynevanson/fp-ts-iterable/compare/v1.1.1...v3.0.0) (2022-06-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* move main morule to `iterable.ts`
+
+### Features
+
+* add `skipWhile` ([1c944af](https://github.com/waynevanson/fp-ts-iterable/commit/1c944afddaccdec68a1e3497ef6298eb0542fffe))
+* add `skipWhileWithIndex` ([11f82aa](https://github.com/waynevanson/fp-ts-iterable/commit/11f82aa2beb25babcc95182867b2d37ae6d24452))
+* move main morule to `iterable.ts` ([08c54fd](https://github.com/waynevanson/fp-ts-iterable/commit/08c54fd2ef0d7d5945a77f12ec82c6b7494e1f76))
+
+
+### Bug Fixes
+
+* use correct entry points ([5ed0483](https://github.com/waynevanson/fp-ts-iterable/commit/5ed048357688ef59af72ba8f1fba558c9a4164a9))
+
 ## [2.0.0](https://github.com/waynevanson/fp-ts-iterable/compare/v1.1.1...v2.0.0) (2022-06-08)
 
 
