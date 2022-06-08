@@ -14,6 +14,8 @@ describe("Iterable", () => {
         expect(element).toStrictEqual(value)
       }
     })
+
+    test.todo("Do")
   })
 
   describe("Functor", () => {
@@ -50,6 +52,31 @@ describe("Iterable", () => {
         })
       )
     })
+  })
+
+  describe("FunctorWithIndex", () => {
+    test.todo("mapWithIndex")
+  })
+
+  describe("Unfoldable", () => {
+    test.todo("unfold")
+  })
+
+  describe("Witherable", () => {
+    test.todo("wilt")
+    test.todo("witherable")
+  })
+
+  describe("Iteratable", () => {
+    test.todo("iterate")
+    test.todo("iterateWhile")
+    test.todo("iterateWhileMap")
+  })
+
+  describe("IteratableWithIndex", () => {
+    test.todo("iterateWithIndex")
+    test.todo("iterateWhileWithIndex")
+    test.todo("iterateWhileMapWithIndex")
   })
 
   describe("Apply", () => {
@@ -155,19 +182,60 @@ describe("Iterable", () => {
         })
       )
     })
+
+    test.todo("flatten")
   })
 
   describe("ChainRec", () => {
-    test.todo("chainRec")
+    test.todo("chainRecBreadthFirst")
+    test.todo("chainRecDepthFirst")
+  })
+
+  describe("Extend", () => {
+    test.todo("extend")
+    test.todo("duplicate")
   })
 
   describe("Alt", () => {
+    test.todo("altW")
+    // F means flipped
+    test.todo("altF")
+    test.todo("altW")
     test.todo("altAll")
   })
 
   describe("Zero", () => {
     test.todo("zero")
     test.todo("guard")
+    test.todo("fromZeroK")
+  })
+
+  describe("Magma", () => {
+    test.todo("getDifferenceMagma")
+  })
+
+  describe("Eq", () => {
+    test.todo("getEq")
+  })
+
+  describe("Semigroup", () => {
+    test.todo("getDifferenceSemigroup")
+    test.todo("getSemigroup")
+    test.todo("getUnionSemigroup")
+  })
+
+  describe("refinements", () => {
+    test.todo("isEmpty")
+    test.todo("isNonEmpty")
+  })
+
+  describe("Monoid", () => {
+    test.todo("getMonoid")
+    test.todo("getUnionMonoid")
+  })
+
+  describe("Ord", () => {
+    test.todo("getOrd")
   })
 
   describe("Alternative", () => {
@@ -197,12 +265,14 @@ describe("Iterable", () => {
     test.todo("reduce")
     test.todo("foldMap")
     test.todo("reduceRight")
+    test.todo("intercalculate")
   })
 
   describe("FoldableWithIndex", () => {
     test.todo("reduceWithIndex")
     test.todo("foldMapWithIndex")
     test.todo("reduceRightWithIndex")
+    test.todo("intercalculate")
   })
 
   describe("Traversable", () => {
@@ -365,6 +435,70 @@ describe("Iterable", () => {
     test.todo("takeRight")
     test.todo("takeRightWhile")
     test.todo("takeRightWhileMap")
+  })
+
+  describe("FromEither", () => {})
+  describe("FromOption", () => {})
+
+  describe("Combinators", () => {
+    test.todo("prepend")
+    test.todo("prependW")
+    test.todo("append")
+    test.todo("appendW")
+    test.todo("head")
+    test.todo("tail")
+    test.todo("chop")
+    test.todo("chunksOf")
+    test.todo("comprehension")
+    test.todo("concat")
+    test.todo("concatW")
+    test.todo("difference")
+    test.todo("intersection")
+    test.todo("intersperse")
+    test.todo("lefts")
+    test.todo("rights")
+    test.todo("rotate")
+    test.todo("prependAll")
+    test.todo("reverse")
+    test.todo("scanLeft")
+    test.todo("scanRight")
+    test.todo("sort")
+    test.todo("sortBy")
+    test.todo("splitAt")
+    test.todo("union")
+    test.todo("uniq")
+    test.todo("zip")
+    test.todo("zipWith")
+    test.todo("unzip")
+    test.todo("makeBy")
+    test.todo("replicate")
+    test.todo("range")
+    test.todo("match")
+    test.todo("matchW")
+    test.todo("matchLeft")
+    test.todo("matchLeftW")
+    test.todo("matchRight")
+    test.todo("matchRightW")
+    test.todo("deleteAt")
+    test.todo("elem")
+    test.todo("empty")
+    test.todo("every")
+    test.todo("some")
+    test.todo("filterE") // own describe block?
+    test.todo("findFirst")
+    test.todo("findFirstMap")
+    test.todo("findFirstIndex")
+    test.todo("findLastIndex")
+    test.todo("findLastMap")
+    test.todo("init")
+    test.todo("insertAt")
+    test.todo("isOutOfBound")
+    test.todo("last")
+    test.todo("lookup")
+    test.todo("modifyAt")
+    test.todo("size")
+    test.todo("spanLeft")
+    test.todo("updateAt")
   })
 
   describe("laws", () => {
