@@ -55,7 +55,20 @@ describe("Iterable", () => {
   })
 
   describe("FunctorWithIndex", () => {
-    test.todo("mapWithIndex")
+    test("mapWithIndex", () => {
+      fc.assert(
+        fc.property(fc.integer(), (integer) => {
+          const f = (i: number, a: number) => a.toString()
+          const expected = f(0, integer)
+          const result = pipe(
+            iterable.of(integer),
+            iterable.mapWithIndex(f),
+            iterable.ToReadonlyArray
+          )
+          expect(result).toStrictEqual(readonlyArray.of(expected))
+        })
+      )
+    })
   })
 
   describe("Unfoldable", () => {
