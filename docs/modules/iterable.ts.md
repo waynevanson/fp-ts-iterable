@@ -41,6 +41,7 @@ Added in v0.12.0
   - [Functor](#functor-1)
   - [FunctorWithIndex](#functorwithindex)
   - [Monad](#monad)
+  - [Unfoldable](#unfoldable)
 - [Model](#model)
   - [URI](#uri)
   - [URI (type alias)](#uri-type-alias)
@@ -50,8 +51,7 @@ Added in v0.12.0
 - [Pointed](#pointed)
   - [Pointed](#pointed-1)
   - [of](#of)
-- [utils](#utils)
-  - [Unfoldable](#unfoldable)
+- [Unfoldable](#unfoldable-1)
   - [unfold](#unfold)
 
 ---
@@ -264,6 +264,14 @@ export declare const FunctorWithIndex: FunctorWithIndex1<'Iterable', number>
 export declare const Monad: Monad1<'Iterable'>
 ```
 
+## Unfoldable
+
+**Signature**
+
+```ts
+export declare const Unfoldable: Unfoldable1<'Iterable'>
+```
+
 # Model
 
 ## URI
@@ -322,15 +330,7 @@ export declare const Pointed: Pointed1<'Iterable'>
 export declare const of: <A>(a: A) => Iterable<A>
 ```
 
-# utils
-
-## Unfoldable
-
-**Signature**
-
-```ts
-export declare const Unfoldable: Unfoldable1<'Iterable'>
-```
+# Unfoldable
 
 ## unfold
 
