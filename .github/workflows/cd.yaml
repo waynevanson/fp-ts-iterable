@@ -32,14 +32,15 @@ jobs:
       - name: Create Version
         run: pnpm exec standard-version
 
-      - run: pnpm publish
+      - name: Publish to NPM
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # assume this was tested during tests
-      - name: Publish Docs
+      - name: Publish Documentation
         run: |
           pnpm exec docs-ts
           git add --force docs/
           git commit -m 'chore: update docs [skip ci]' || true
-          git push --tags
+          git push --follow-tags
