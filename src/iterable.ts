@@ -28,7 +28,7 @@ import { NaturalTransformation11 } from "fp-ts/lib/NaturalTransformation"
 import { Pointed1 } from "fp-ts/lib/Pointed"
 import { Predicate } from "fp-ts/lib/Predicate"
 import { Refinement } from "fp-ts/lib/Refinement"
-import { Unfoldable, Unfoldable1 } from "fp-ts/lib/Unfoldable"
+import { Unfoldable1 } from "fp-ts/lib/Unfoldable"
 
 /**
  * @category Model
@@ -338,3 +338,5 @@ export const unfold: Unfoldable1<URI>["unfold"] = (b, f) => ({
     }
   },
 })
+
+export const Unfoldable: Unfoldable1<URI> = { URI, unfold }
