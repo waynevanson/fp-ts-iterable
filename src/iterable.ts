@@ -9,6 +9,8 @@ import {
   functor,
   chain as chain_,
   option,
+  ord,
+  number,
 } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
@@ -291,3 +293,16 @@ export const skipWhileWithIndex = <A1, A2 extends A1>(
 export const skipWhile = <A1, A2 extends A1>(
   f: Predicate<A1> | Refinement<A1, A2>
 ) => skipWhileWithIndex((i, a: A1) => f(a))
+
+/**
+ * @category Combinators
+ */
+export const skip =
+  (count: number) =>
+  <A1>(fa: Iterable<A1>) =>
+    pipe(
+      fa,
+      skipWhileWithIndex(
+        (i) => i < ord.clamp(number.Ord)(0, Number.MAX_SAFE_INTEGER)(count)
+      )
+    )

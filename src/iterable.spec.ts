@@ -312,7 +312,35 @@ describe("Iterable", () => {
   })
 
   describe("Skippable", () => {
-    test.todo("skip")
+    describe("skip", () => {
+      it("should return an empty iterable when we skip every element", () => {
+        fc.assert(
+          fc.property(fc.array(fc.integer()), (integers) => {
+            const result = pipe(
+              iterable.FromReadonlyArray(integers),
+              iterable.skip(integers.length),
+              iterable.ToReadonlyArray
+            )
+
+            expect(result).toStrictEqual(readonlyArray.empty)
+          })
+        )
+      })
+
+      it("should return the same iterable when skipping zero elements", () => {
+        fc.assert(
+          fc.property(fc.array(fc.integer()), (integers) => {
+            const result = pipe(
+              iterable.FromReadonlyArray(integers),
+              iterable.skip(0),
+              iterable.ToReadonlyArray
+            )
+
+            expect(result).toStrictEqual(integers)
+          })
+        )
+      })
+    })
 
     test("skipWhile", () => {
       const predicate = (a: number) => a > 0
