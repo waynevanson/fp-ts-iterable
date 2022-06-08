@@ -78,15 +78,8 @@ export const Pointed: Pointed1<URI> = { URI, of }
 /**
  * @category Functor
  */
-export const map =
-  <A1, A2>(f: (a: A1) => A2) =>
-  (fa: Iterable<A1>): Iterable<A2> => ({
-    *[Symbol.iterator]() {
-      for (const a of fa) {
-        yield f(a)
-      }
-    },
-  })
+export const map = <A1, A2>(f: (a: A1) => A2) =>
+  mapWithIndex((i, a: A1) => f(a))
 
 /**
  * @category Instances
