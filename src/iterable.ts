@@ -20,7 +20,7 @@ import {
   PredicateWithIndex,
   RefinementWithIndex,
 } from "fp-ts/lib/FilterableWithIndex"
-import { pipe } from "fp-ts/lib/function"
+import { identity, pipe } from "fp-ts/lib/function"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { FunctorWithIndex1 } from "fp-ts/lib/FunctorWithIndex"
 import { Monad1 } from "fp-ts/lib/Monad"
@@ -168,6 +168,12 @@ export const chain =
  * @category Instances
  */
 export const Chain: Chain1<URI> = { ...Apply, chain: (fa, f) => chain(f)(fa) }
+
+/**
+ * @category Chain
+ */
+export const flatten = <A1>(fa: Iterable<Iterable<A1>>): Iterable<A1> =>
+  pipe(fa, chain(identity))
 
 /**
  * @category Chain

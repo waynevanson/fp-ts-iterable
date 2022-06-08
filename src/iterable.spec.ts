@@ -212,7 +212,21 @@ describe("Iterable", () => {
       )
     })
 
-    test.todo("flatten")
+    test("flatten", () => {
+      fc.assert(
+        fc.property(fc.integer(), (integer) => {
+          const fb = iterable.of(integer)
+          const expected = iterable.ToReadonlyArray(fb)
+          const result = pipe(
+            fb,
+            iterable.of,
+            iterable.flatten,
+            iterable.ToReadonlyArray
+          )
+          expect(result).toStrictEqual(expected)
+        })
+      )
+    })
   })
 
   describe("ChainRec", () => {
