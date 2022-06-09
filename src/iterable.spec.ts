@@ -430,8 +430,8 @@ describe("Iterable", () => {
     })
 
     test.todo("skipRight")
-    test.todo("skipWhileRight")
-    test.todo("skipWhileMapRight")
+    test.todo("skipRightWhile")
+    test.todo("skipRightWhileMap")
   })
 
   describe("SkippableWithIndex", () => {

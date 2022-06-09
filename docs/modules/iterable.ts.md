@@ -21,6 +21,7 @@ Added in v0.12.0
   - [bind](#bind)
   - [chain](#chain)
   - [chainFirst](#chainfirst)
+  - [flatten](#flatten)
 - [Combinators](#combinators)
   - [skip](#skip)
   - [skipWhile](#skipwhile)
@@ -120,6 +121,14 @@ export declare const chain: <A1, A2>(f: (a: A1) => Iterable<A2>) => (fa: Iterabl
 
 ```ts
 export declare const chainFirst: <A, B>(f: (a: A) => Iterable<B>) => (first: Iterable<A>) => Iterable<A>
+```
+
+## flatten
+
+**Signature**
+
+```ts
+export declare const flatten: <A1>(fa: Iterable<Iterable<A1>>) => Iterable<A1>
 ```
 
 # Combinators
