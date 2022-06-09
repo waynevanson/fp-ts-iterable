@@ -331,6 +331,9 @@ export const skip =
       )
     )
 
+/**
+ * @category Combinators
+ */
 export const skipRightWhileMapWithIndex =
   <A1, A2>(f: (i: number, a: A1) => option.Option<A2>) =>
   (fa: Iterable<A1>): Iterable<A1> => ({
@@ -349,6 +352,9 @@ export const skipRightWhileMapWithIndex =
     },
   })
 
+/**
+ * @category Combinators
+ */
 export const skipRightWhileWithIndex =
   <A1, A2 extends A1>(
     f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>

@@ -56,6 +56,7 @@ Added in v0.12.0
   - [unfold](#unfold)
 - [utils](#utils)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
+  - [skipRightWhileWithIndex](#skiprightwhilewithindex)
 
 ---
 
@@ -360,5 +361,15 @@ export declare const unfold: <A, B>(b: B, f: (b: B) => option.Option<[A, B]>) =>
 ```ts
 export declare const skipRightWhileMapWithIndex: <A1, A2>(
   f: (i: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipRightWhileWithIndex
+
+**Signature**
+
+```ts
+export declare const skipRightWhileWithIndex: <A1, A2 extends A1>(
+  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
 ) => (fa: Iterable<A1>) => Iterable<A1>
 ```
