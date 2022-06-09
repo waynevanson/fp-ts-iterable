@@ -24,6 +24,7 @@ Added in v0.12.0
   - [flatten](#flatten)
 - [Combinators](#combinators)
   - [skip](#skip)
+  - [skipRight](#skipright)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
   - [skipRightWhileWithIndex](#skiprightwhilewithindex)
   - [skipWhile](#skipwhile)
@@ -141,6 +142,14 @@ export declare const flatten: <A1>(fa: Iterable<Iterable<A1>>) => Iterable<A1>
 
 ```ts
 export declare const skip: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipRight
+
+**Signature**
+
+```ts
+export declare const skipRight: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
 ```
 
 ## skipRightWhileMapWithIndex
