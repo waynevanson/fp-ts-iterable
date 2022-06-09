@@ -54,6 +54,8 @@ Added in v0.12.0
   - [of](#of)
 - [Unfoldable](#unfoldable-1)
   - [unfold](#unfold)
+- [utils](#utils)
+  - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
 
 ---
 
@@ -347,4 +349,16 @@ export declare const of: <A>(a: A) => Iterable<A>
 
 ```ts
 export declare const unfold: <A, B>(b: B, f: (b: B) => option.Option<[A, B]>) => Iterable<A>
+```
+
+# utils
+
+## skipRightWhileMapWithIndex
+
+**Signature**
+
+```ts
+export declare const skipRightWhileMapWithIndex: <A1, A2>(
+  f: (i: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
 ```

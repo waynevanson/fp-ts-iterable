@@ -349,6 +349,13 @@ export const skipRightWhileMapWithIndex =
     },
   })
 
+export const skipRightWhileWithIndex =
+  <A1, A2 extends A1>(
+    f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
+  ) =>
+  (fa: Iterable<A1>): Iterable<A1> =>
+    skipRightWhileMapWithIndex(flow(f, option.guard))(fa)
+
 /**
  * @category Unfoldable
  */

@@ -484,7 +484,50 @@ describe("Iterable", () => {
     })
 
     test.todo("skipRightWithIndex")
-    test.todo("skipRightWhileWithIndex")
+    describe("skipRightWhileWithIndex", () => {
+      it("should always match an array's index and element", () => {
+        fc.assert(
+          fc.property(fc.array(fc.string()), (strings) => {
+            const predicate = (i: number, a: string) => strings[i] !== a
+
+            const result = pipe(
+              strings,
+              iterable.FromReadonlyArray,
+              iterable.skipRightWhileWithIndex(predicate),
+              iterable.ToReadonlyArray
+            )
+            expect(result).toStrictEqual(strings)
+          })
+        )
+      })
+
+      it("should skip right elements only", () => {
+        const arbs = fc
+          .integer({ min: 0, max: 10 })
+          .chain((smaller) =>
+            fc
+              .integer({ min: smaller, max: 20 })
+              .map((bigger) => ({ bigger, smaller }))
+          )
+
+        fc.assert(
+          fc.property(arbs, ({ bigger, smaller }) => {
+            const predicate = (i: number, a: unknown) => i > smaller
+
+            const array = readonlyArray.makeBy(bigger, constVoid)
+
+            const result = pipe(
+              array,
+              iterable.FromReadonlyArray,
+              iterable.skipRightWhileWithIndex(predicate),
+              iterable.ToReadonlyArray
+            )
+
+            expect(result).toHaveLength(smaller)
+          })
+        )
+      })
+    })
 
     describe("skipRightWhileMapWithIndex", () => {
       it("should always match an array's index and element", () => {
