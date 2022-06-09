@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.2.0 (2022-06-09)
+
+
+### Features
+
+* add `skipRight` ([2e85efa](https://github.com/waynevanson/fp-ts-iterable/commit/2e85efa63cd497171c4149959de5ae96cf70c076))
+
 ### 3.1.1 (2022-06-08)
 
 ## 3.1.0 (2022-06-08)
