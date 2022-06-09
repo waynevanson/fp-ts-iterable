@@ -24,6 +24,8 @@ Added in v0.12.0
   - [flatten](#flatten)
 - [Combinators](#combinators)
   - [skip](#skip)
+  - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
+  - [skipRightWhileWithIndex](#skiprightwhilewithindex)
   - [skipWhile](#skipwhile)
   - [skipWhileMap](#skipwhilemap)
   - [skipWhileMapWithIndex](#skipwhilemapwithindex)
@@ -54,9 +56,6 @@ Added in v0.12.0
   - [of](#of)
 - [Unfoldable](#unfoldable-1)
   - [unfold](#unfold)
-- [utils](#utils)
-  - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
-  - [skipRightWhileWithIndex](#skiprightwhilewithindex)
 
 ---
 
@@ -142,6 +141,26 @@ export declare const flatten: <A1>(fa: Iterable<Iterable<A1>>) => Iterable<A1>
 
 ```ts
 export declare const skip: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipRightWhileMapWithIndex
+
+**Signature**
+
+```ts
+export declare const skipRightWhileMapWithIndex: <A1, A2>(
+  f: (i: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipRightWhileWithIndex
+
+**Signature**
+
+```ts
+export declare const skipRightWhileWithIndex: <A1, A2 extends A1>(
+  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 
 ## skipWhile
@@ -350,26 +369,4 @@ export declare const of: <A>(a: A) => Iterable<A>
 
 ```ts
 export declare const unfold: <A, B>(b: B, f: (b: B) => option.Option<[A, B]>) => Iterable<A>
-```
-
-# utils
-
-## skipRightWhileMapWithIndex
-
-**Signature**
-
-```ts
-export declare const skipRightWhileMapWithIndex: <A1, A2>(
-  f: (i: number, a: A1) => option.Option<A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
-```
-
-## skipRightWhileWithIndex
-
-**Signature**
-
-```ts
-export declare const skipRightWhileWithIndex: <A1, A2 extends A1>(
-  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
 ```

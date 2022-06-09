@@ -429,7 +429,30 @@ describe("Iterable", () => {
       )
     })
 
-    test.todo("skipRight")
+    test("skipRight", () => {
+      const arbs = fc
+        .integer({ min: 0, max: 10 })
+        .chain((smaller) =>
+          fc
+            .integer({ min: smaller, max: 20 })
+            .map((bigger) => ({ bigger, smaller }))
+        )
+
+      fc.assert(
+        fc.property(arbs, ({ bigger, smaller }) => {
+          const array = readonlyArray.makeBy(bigger, constVoid)
+
+          const result = pipe(
+            array,
+            iterable.FromReadonlyArray,
+            iterable.skipRight(smaller),
+            iterable.ToReadonlyArray
+          )
+
+          expect(result).toHaveLength(bigger - smaller)
+        })
+      )
+    })
     test.todo("skipRightWhile")
     test.todo("skipRightWhileMap")
   })
@@ -483,7 +506,6 @@ describe("Iterable", () => {
       )
     })
 
-    test.todo("skipRightWithIndex")
     describe("skipRightWhileWithIndex", () => {
       it("should always match an array's index and element", () => {
         fc.assert(

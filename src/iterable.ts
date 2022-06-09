@@ -20,6 +20,7 @@ import {
   PredicateWithIndex,
   RefinementWithIndex,
 } from "fp-ts/lib/FilterableWithIndex"
+import { toReadonlyArray } from "fp-ts/lib/Foldable"
 import { flow, identity, pipe } from "fp-ts/lib/function"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { FunctorWithIndex1 } from "fp-ts/lib/FunctorWithIndex"
@@ -361,6 +362,14 @@ export const skipRightWhileWithIndex =
   ) =>
   (fa: Iterable<A1>): Iterable<A1> =>
     skipRightWhileMapWithIndex(flow(f, option.guard))(fa)
+
+/**
+ * @category Combinators
+ */
+export const skipRight =
+  (count: number) =>
+  <A1>(fa: Iterable<A1>): Iterable<A1> =>
+    pipe(fa, ToReadonlyArray, readonlyArray.dropRight(count), FromReadonlyArray)
 
 /**
  * @category Unfoldable
