@@ -20,7 +20,7 @@ import {
   PredicateWithIndex,
   RefinementWithIndex,
 } from "fp-ts/lib/FilterableWithIndex"
-import { identity, pipe } from "fp-ts/lib/function"
+import { flow, identity, pipe } from "fp-ts/lib/function"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { FunctorWithIndex1 } from "fp-ts/lib/FunctorWithIndex"
 import { Monad1 } from "fp-ts/lib/Monad"
@@ -330,6 +330,24 @@ export const skip =
         (i) => i < ord.clamp(number.Ord)(0, Number.MAX_SAFE_INTEGER)(count)
       )
     )
+
+export const skipRightWhileMapWithIndex =
+  <A1, A2>(f: (i: number, a: A1) => option.Option<A2>) =>
+  (fa: Iterable<A1>): Iterable<A1> => ({
+    *[Symbol.iterator]() {
+      const result = ToReadonlyArray(fa) as Array<A1>
+
+      for (let i = result.length; i > 0; i--) {
+        if (option.isSome(f(i, result[i]))) {
+          result.pop()
+        } else {
+          break
+        }
+      }
+
+      yield* result
+    },
+  })
 
 /**
  * @category Unfoldable
