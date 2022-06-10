@@ -453,8 +453,37 @@ describe("Iterable", () => {
         })
       )
     })
+
     test.todo("skipRightWhile")
-    test.todo("skipRightWhileMap")
+
+    describe("skipRightWhileMap", () => {
+      it("should skip right elements only", () => {
+        const arbs = fc
+          .integer({ min: 0, max: 10 })
+          .chain((smaller) =>
+            fc
+              .integer({ min: smaller, max: 20 })
+              .map((bigger) => ({ bigger, smaller }))
+          )
+
+        fc.assert(
+          fc.property(arbs, ({ bigger, smaller }) => {
+            const predicate = (i: number) => option.guard(i >= smaller)
+
+            const array = readonlyArray.makeBy(bigger, (i) => i)
+
+            const result = pipe(
+              array,
+              iterable.FromReadonlyArray,
+              iterable.skipRightWhileMap(predicate),
+              iterable.ToReadonlyArray
+            )
+
+            expect(result).toHaveLength(smaller)
+          })
+        )
+      })
+    })
   })
 
   describe("SkippableWithIndex", () => {
@@ -534,7 +563,7 @@ describe("Iterable", () => {
 
         fc.assert(
           fc.property(arbs, ({ bigger, smaller }) => {
-            const predicate = (i: number, a: unknown) => i > smaller
+            const predicate = (i: number, a: unknown) => i >= smaller
 
             const array = readonlyArray.makeBy(bigger, constVoid)
 
@@ -581,7 +610,7 @@ describe("Iterable", () => {
         fc.assert(
           fc.property(arbs, ({ bigger, smaller }) => {
             const predicate = (i: number, a: unknown) =>
-              option.guard(i > smaller)
+              option.guard(i >= smaller)
 
             const array = readonlyArray.makeBy(bigger, constVoid)
 

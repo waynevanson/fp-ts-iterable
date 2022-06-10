@@ -341,15 +341,17 @@ export const skipRightWhileMapWithIndex =
     *[Symbol.iterator]() {
       const result = ToReadonlyArray(fa) as Array<A1>
 
-      for (let i = result.length; i > 0; i--) {
-        if (option.isSome(f(i, result[i]))) {
+      for (let i = result.length - 1; i >= 0; i--) {
+        const value = f(i, result[i])
+        // if Some, we need to skip it
+        if (option.isSome(value)) {
           result.pop()
         } else {
           break
         }
       }
 
-      yield* result
+      yield* FromReadonlyArray(result)
     },
   })
 
@@ -370,6 +372,12 @@ export const skipRight =
   (count: number) =>
   <A1>(fa: Iterable<A1>): Iterable<A1> =>
     pipe(fa, ToReadonlyArray, readonlyArray.dropRight(count), FromReadonlyArray)
+
+/**
+ * @category Combinators
+ */
+export const skipRightWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
+  skipRightWhileMapWithIndex((_, a: A1) => f(a))
 
 /**
  * @category Unfoldable
