@@ -368,7 +368,7 @@ export const skipRightWhileWithIndex =
 /**
  * @category Combinators
  */
-export const skipRight =
+export const dropRight =
   (count: number) =>
   <A1>(fa: Iterable<A1>): Iterable<A1> =>
     pipe(fa, ToReadonlyArray, readonlyArray.dropRight(count), FromReadonlyArray)

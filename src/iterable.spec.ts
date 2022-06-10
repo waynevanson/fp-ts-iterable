@@ -429,7 +429,7 @@ describe("Iterable", () => {
       )
     })
 
-    test("skipRight", () => {
+    test("dropRight", () => {
       const arbs = fc
         .integer({ min: 0, max: 10 })
         .chain((smaller) =>
@@ -445,7 +445,7 @@ describe("Iterable", () => {
           const result = pipe(
             array,
             iterable.FromReadonlyArray,
-            iterable.skipRight(smaller),
+            iterable.dropRight(smaller),
             iterable.ToReadonlyArray
           )
 
