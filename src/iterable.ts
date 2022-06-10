@@ -296,7 +296,7 @@ export const skipWhileMapWithIndex =
 /**
  * @category Combinators
  */
-export const skipWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
+export const dropLeftWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
   skipWhileMapWithIndex((i, a: A1) => f(a))
 
 /**

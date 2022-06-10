@@ -24,11 +24,11 @@ Added in v0.12.0
   - [flatten](#flatten)
 - [Combinators](#combinators)
   - [dropLeft](#dropleft)
+  - [dropLeftWhile](#dropleftwhile)
   - [skipRight](#skipright)
   - [skipRightWhileMap](#skiprightwhilemap)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
   - [skipRightWhileWithIndex](#skiprightwhilewithindex)
-  - [skipWhile](#skipwhile)
   - [skipWhileMap](#skipwhilemap)
   - [skipWhileMapWithIndex](#skipwhilemapwithindex)
   - [skipWhileWithIndex](#skipwhilewithindex)
@@ -145,6 +145,16 @@ export declare const flatten: <A1>(fa: Iterable<Iterable<A1>>) => Iterable<A1>
 export declare const dropLeft: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
 ```
 
+## dropLeftWhile
+
+**Signature**
+
+```ts
+export declare const dropLeftWhile: <A1, A2 extends A1>(
+  f: Predicate<A1> | Refinement<A1, A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
 ## skipRight
 
 **Signature**
@@ -178,16 +188,6 @@ export declare const skipRightWhileMapWithIndex: <A1, A2>(
 ```ts
 export declare const skipRightWhileWithIndex: <A1, A2 extends A1>(
   f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
-```
-
-## skipWhile
-
-**Signature**
-
-```ts
-export declare const skipWhile: <A1, A2 extends A1>(
-  f: Predicate<A1> | Refinement<A1, A2>
 ) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 
