@@ -509,7 +509,7 @@ describe("Iterable", () => {
       )
     })
 
-    test("skipWhileMapWithIndex", () => {
+    test("dropLeftWhileMapWithIndex", () => {
       const predicate = (a: number) => a > 0
 
       fc.assert(
@@ -522,7 +522,7 @@ describe("Iterable", () => {
 
           const result = pipe(
             iterable.FromReadonlyArray(integers),
-            iterable.skipWhileMapWithIndex((i, a) =>
+            iterable.dropLeftWhileMapWithIndex((i, a) =>
               option.fromPredicate(predicate)(a)
             ),
             iterable.ToReadonlyArray

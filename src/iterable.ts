@@ -261,7 +261,7 @@ export const FromReadonlyArray: NaturalTransformation11<
 /**
  * @category Combinators
  */
-export const skipWhileMapWithIndex =
+export const dropLeftWhileMapWithIndex =
   <A1, A2>(f: (index: number, a: A1) => option.Option<A2>) =>
   (fa: Iterable<A1>): Iterable<A1> => ({
     *[Symbol.iterator]() {
@@ -297,7 +297,7 @@ export const skipWhileMapWithIndex =
  * @category Combinators
  */
 export const dropLeftWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
-  skipWhileMapWithIndex((i, a: A1) => f(a))
+  dropLeftWhileMapWithIndex((i, a: A1) => f(a))
 
 /**
  * @category Combinators
@@ -305,7 +305,7 @@ export const dropLeftWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
 export const dropLeftWhileWithIndex = <A1, A2 extends A1>(
   f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
 ) =>
-  skipWhileMapWithIndex((i, a: A1) =>
+  dropLeftWhileMapWithIndex((i, a: A1) =>
     pipe(
       a,
       option.fromPredicate((a) => f(i, a))
