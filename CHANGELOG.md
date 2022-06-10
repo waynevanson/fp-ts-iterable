@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.3.0 (2022-06-10)
+
+
+### Features
+
+* add `skipRightWhileMapWithIndex ([1bbacba](https://github.com/waynevanson/fp-ts-iterable/commit/1bbacbaa7626573f4c96347c1c18a4c6b127a182))
+
 ## 3.2.0 (2022-06-09)
 
 
