@@ -376,7 +376,7 @@ export const dropRight =
 /**
  * @category Combinators
  */
-export const skipRightWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
+export const dropRightWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
   skipRightWhileMapWithIndex((_, a: A1) => f(a))
 
 /**

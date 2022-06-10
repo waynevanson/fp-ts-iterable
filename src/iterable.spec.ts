@@ -454,9 +454,9 @@ describe("Iterable", () => {
       )
     })
 
-    test.todo("skipRightWhile")
+    test.todo("dropRightWhile")
 
-    describe("skipRightWhileMap", () => {
+    describe("dropRightWhileMap", () => {
       it("should skip right elements only", () => {
         const arbs = fc
           .integer({ min: 0, max: 10 })
@@ -475,7 +475,7 @@ describe("Iterable", () => {
             const result = pipe(
               array,
               iterable.FromReadonlyArray,
-              iterable.skipRightWhileMap(predicate),
+              iterable.dropRightWhileMap(predicate),
               iterable.ToReadonlyArray
             )
 
