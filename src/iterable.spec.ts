@@ -486,10 +486,8 @@ describe("Iterable", () => {
     })
   })
 
-  describe("SkippableWithIndex", () => {
-    test.todo("skipWithIndex")
-
-    test("skipWhileWithIndex", () => {
+  describe("DroppableWithIndex", () => {
+    test("dropWhileWithIndex", () => {
       const predicate = (a: number) => a > 0
 
       fc.assert(
@@ -502,7 +500,7 @@ describe("Iterable", () => {
 
           const result = pipe(
             iterable.FromReadonlyArray(integers),
-            iterable.skipWhileWithIndex((i, a) => predicate(a)),
+            iterable.dropLeftWhileWithIndex((i, a) => predicate(a)),
             iterable.ToReadonlyArray
           )
 

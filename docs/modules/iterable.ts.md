@@ -27,7 +27,7 @@ Added in v0.12.0
   - [dropLeftWhile](#dropleftwhile)
   - [dropLeftWhileMap](#dropleftwhilemap)
   - [dropRight](#dropright)
-  - [skipRightWhileMap](#skiprightwhilemap)
+  - [dropRightWhileMap](#droprightwhilemap)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
   - [skipRightWhileWithIndex](#skiprightwhilewithindex)
   - [skipWhileMapWithIndex](#skipwhilemapwithindex)
@@ -171,12 +171,12 @@ export declare const dropLeftWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>)
 export declare const dropRight: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
 ```
 
-## skipRightWhileMap
+## dropRightWhileMap
 
 **Signature**
 
 ```ts
-export declare const skipRightWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => (fa: Iterable<A1>) => Iterable<A1>
+export declare const dropRightWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 
 ## skipRightWhileMapWithIndex

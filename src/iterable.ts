@@ -302,7 +302,7 @@ export const dropLeftWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
 /**
  * @category Combinators
  */
-export const skipWhileWithIndex = <A1, A2 extends A1>(
+export const dropLeftWhileWithIndex = <A1, A2 extends A1>(
   f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
 ) =>
   skipWhileMapWithIndex((i, a: A1) =>
@@ -317,7 +317,7 @@ export const skipWhileWithIndex = <A1, A2 extends A1>(
  */
 export const dropLeftWhile = <A1, A2 extends A1>(
   f: Predicate<A1> | Refinement<A1, A2>
-) => skipWhileWithIndex((i, a: A1) => f(a))
+) => dropLeftWhileWithIndex((i, a: A1) => f(a))
 
 /**
  * @category Combinators
@@ -327,7 +327,7 @@ export const dropLeft =
   <A1>(fa: Iterable<A1>) =>
     pipe(
       fa,
-      skipWhileWithIndex(
+      dropLeftWhileWithIndex(
         (i) => i < ord.clamp(number.Ord)(0, Number.MAX_SAFE_INTEGER)(count)
       )
     )
