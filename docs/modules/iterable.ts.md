@@ -23,7 +23,7 @@ Added in v0.12.0
   - [chainFirst](#chainfirst)
   - [flatten](#flatten)
 - [Combinators](#combinators)
-  - [skip](#skip)
+  - [dropLeft](#dropleft)
   - [skipRight](#skipright)
   - [skipRightWhileMap](#skiprightwhilemap)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
@@ -137,12 +137,12 @@ export declare const flatten: <A1>(fa: Iterable<Iterable<A1>>) => Iterable<A1>
 
 # Combinators
 
-## skip
+## dropLeft
 
 **Signature**
 
 ```ts
-export declare const skip: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
+export declare const dropLeft: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
 ```
 
 ## skipRight

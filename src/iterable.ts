@@ -315,7 +315,7 @@ export const skipWhileWithIndex = <A1, A2 extends A1>(
 /**
  * @category Combinators
  */
-export const skipWhile = <A1, A2 extends A1>(
+export const dropLeftWhile = <A1, A2 extends A1>(
   f: Predicate<A1> | Refinement<A1, A2>
 ) => skipWhileWithIndex((i, a: A1) => f(a))
 

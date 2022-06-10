@@ -385,7 +385,7 @@ describe("Iterable", () => {
       })
     })
 
-    test("skipWhile", () => {
+    test("dropWhile", () => {
       const predicate = (a: number) => a > 0
 
       fc.assert(
@@ -398,7 +398,7 @@ describe("Iterable", () => {
 
           const result = pipe(
             iterable.FromReadonlyArray(integers),
-            iterable.skipWhile(predicate),
+            iterable.dropLeftWhile(predicate),
             iterable.ToReadonlyArray
           )
 
