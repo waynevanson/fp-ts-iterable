@@ -354,14 +354,14 @@ describe("Iterable", () => {
     test.todo("FromAsyncIterable")
   })
 
-  describe("Skippable", () => {
-    describe("skip", () => {
+  describe("Droppable", () => {
+    describe("dropLeft", () => {
       it("should return an empty iterable when we skip every element", () => {
         fc.assert(
           fc.property(fc.array(fc.integer()), (integers) => {
             const result = pipe(
               iterable.FromReadonlyArray(integers),
-              iterable.skip(integers.length),
+              iterable.dropLeft(integers.length),
               iterable.ToReadonlyArray
             )
 
@@ -375,7 +375,7 @@ describe("Iterable", () => {
           fc.property(fc.array(fc.integer()), (integers) => {
             const result = pipe(
               iterable.FromReadonlyArray(integers),
-              iterable.skip(0),
+              iterable.dropLeft(0),
               iterable.ToReadonlyArray
             )
 

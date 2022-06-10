@@ -322,7 +322,7 @@ export const skipWhile = <A1, A2 extends A1>(
 /**
  * @category Combinators
  */
-export const skip =
+export const dropLeft =
   (count: number) =>
   <A1>(fa: Iterable<A1>) =>
     pipe(
