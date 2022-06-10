@@ -25,6 +25,7 @@ Added in v0.12.0
 - [Combinators](#combinators)
   - [skip](#skip)
   - [skipRight](#skipright)
+  - [skipRightWhileMap](#skiprightwhilemap)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
   - [skipRightWhileWithIndex](#skiprightwhilewithindex)
   - [skipWhile](#skipwhile)
@@ -150,6 +151,14 @@ export declare const skip: (count: number) => <A1>(fa: Iterable<A1>) => Iterable
 
 ```ts
 export declare const skipRight: (count: number) => <A1>(fa: Iterable<A1>) => Iterable<A1>
+```
+
+## skipRightWhileMap
+
+**Signature**
+
+```ts
+export declare const skipRightWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 
 ## skipRightWhileMapWithIndex
