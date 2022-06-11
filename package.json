@@ -3,7 +3,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
-  "homepage": "https://waynevanson.github.io/fp-ts-iterable",
+  "homepage": "https://github.com/waynevanson/fp-ts-iterable",
   "files": [
     "dist"
   ],
