@@ -41,5 +41,5 @@
     "*!(.spec).ts": "docs-ts"
   },
   "husky": {},
-  "version": "3.3.0"
+  "version": "3.3.1"
 }
