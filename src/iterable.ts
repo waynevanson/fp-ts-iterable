@@ -335,7 +335,7 @@ export const dropLeft =
 /**
  * @category Combinators
  */
-export const skipRightWhileMapWithIndex =
+export const dropRightWhileMapWithIndex =
   <A1, A2>(f: (i: number, a: A1) => option.Option<A2>) =>
   (fa: Iterable<A1>): Iterable<A1> => ({
     *[Symbol.iterator]() {
@@ -363,7 +363,7 @@ export const dropRightWhileWithIndex =
     f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
   ) =>
   (fa: Iterable<A1>): Iterable<A1> =>
-    skipRightWhileMapWithIndex(flow(f, option.guard))(fa)
+    dropRightWhileMapWithIndex(flow(f, option.guard))(fa)
 
 /**
  * @category Combinators
@@ -377,7 +377,7 @@ export const dropRight =
  * @category Combinators
  */
 export const dropRightWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
-  skipRightWhileMapWithIndex((_, a: A1) => f(a))
+  dropRightWhileMapWithIndex((_, a: A1) => f(a))
 
 /**
  * @category Unfoldable
