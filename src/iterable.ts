@@ -256,8 +256,6 @@ export const FromReadonlyArray: NaturalTransformation11<
   },
 })
 
-// {skip,take}{,While,WhileMap}{,WithIndex}{,right}
-
 /**
  * @category Combinators
  */
@@ -343,7 +341,6 @@ export const dropRightWhileMapWithIndex =
 
       for (let i = result.length - 1; i >= 0; i--) {
         const value = f(i, result[i])
-        // if Some, we need to skip it
         if (option.isSome(value)) {
           result.pop()
         } else {
