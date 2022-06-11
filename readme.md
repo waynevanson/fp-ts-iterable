@@ -1,6 +1,8 @@
 # fp-ts-iterable
 
-fp-ts bindings for `Iterable` types.
+fp-ts bindings for `Iterable` types, allowing for programming lazy and infinite lists.
+
+This could (soon) be used as a drop in replacement for the module `fp-ts/ReadonlyArray`
 
 ## Installation
 
@@ -18,6 +20,22 @@ pnpm add fp-ts-iterable
 ## Documentation
 
 Please visit the [documentation](https://waynevanson.github.io/fp-ts-iterable/) for the API surface.
+
+## Upcoming
+
+- Structures
+  - `IterableTask` for interop with `AsyncIterator`
+  - `NonemptyIterable`
+  - `NonempyIterableTask`
+- Typeclasses
+  - TakeableLeft
+  - TakeableLeftWithIndex
+  - TakeableRight
+  - TakeableRightWithIndex
+  - DroppableLeft
+  - DroppableLeftWithIndex
+  - DroppableRight
+  - DroppableRightWithIndex
 
 ## Recommendations
 
