@@ -26,12 +26,12 @@ Added in v0.12.0
   - [dropLeft](#dropleft)
   - [dropLeftWhile](#dropleftwhile)
   - [dropLeftWhileMap](#dropleftwhilemap)
+  - [dropLeftWhileMapWithIndex](#dropleftwhilemapwithindex)
+  - [dropLeftWhileWithIndex](#dropleftwhilewithindex)
   - [dropRight](#dropright)
   - [dropRightWhileMap](#droprightwhilemap)
   - [skipRightWhileMapWithIndex](#skiprightwhilemapwithindex)
   - [skipRightWhileWithIndex](#skiprightwhilewithindex)
-  - [skipWhileMapWithIndex](#skipwhilemapwithindex)
-  - [skipWhileWithIndex](#skipwhilewithindex)
 - [Eq](#eq)
   - [getEq](#geteq)
 - [Functor](#functor)
@@ -163,6 +163,26 @@ export declare const dropLeftWhile: <A1, A2 extends A1>(
 export declare const dropLeftWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => (fa: Iterable<A1>) => Iterable<A1>
 ```
 
+## dropLeftWhileMapWithIndex
+
+**Signature**
+
+```ts
+export declare const dropLeftWhileMapWithIndex: <A1, A2>(
+  f: (index: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
+## dropLeftWhileWithIndex
+
+**Signature**
+
+```ts
+export declare const dropLeftWhileWithIndex: <A1, A2 extends A1>(
+  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
+) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
 ## dropRight
 
 **Signature**
@@ -195,26 +215,6 @@ export declare const skipRightWhileMapWithIndex: <A1, A2>(
 
 ```ts
 export declare const skipRightWhileWithIndex: <A1, A2 extends A1>(
-  f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
-```
-
-## skipWhileMapWithIndex
-
-**Signature**
-
-```ts
-export declare const skipWhileMapWithIndex: <A1, A2>(
-  f: (index: number, a: A1) => option.Option<A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
-```
-
-## skipWhileWithIndex
-
-**Signature**
-
-```ts
-export declare const skipWhileWithIndex: <A1, A2 extends A1>(
   f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
 ) => (fa: Iterable<A1>) => Iterable<A1>
 ```

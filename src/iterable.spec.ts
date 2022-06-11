@@ -533,7 +533,7 @@ describe("Iterable", () => {
       )
     })
 
-    describe("skipRightWhileWithIndex", () => {
+    describe("dropRightWhileWithIndex", () => {
       it("should always match an array's index and element", () => {
         fc.assert(
           fc.property(fc.array(fc.string()), (strings) => {
@@ -542,7 +542,7 @@ describe("Iterable", () => {
             const result = pipe(
               strings,
               iterable.FromReadonlyArray,
-              iterable.skipRightWhileWithIndex(predicate),
+              iterable.dropRightWhileWithIndex(predicate),
               iterable.ToReadonlyArray
             )
             expect(result).toStrictEqual(strings)
@@ -568,7 +568,7 @@ describe("Iterable", () => {
             const result = pipe(
               array,
               iterable.FromReadonlyArray,
-              iterable.skipRightWhileWithIndex(predicate),
+              iterable.dropRightWhileWithIndex(predicate),
               iterable.ToReadonlyArray
             )
 
