@@ -19,7 +19,13 @@ pnpm add fp-ts-iterable
 
 Please visit the [documentation](https://waynevanson.github.io/fp-ts-iterable/) for the API surface.
 
-## Usage
+## Recommendations
+
+### Coersion from types that are `Iterable`
+
+If coersing from something like a `ReadonlyArray`, it's recommended to coerce it to an `Iterable` using `FromReadonlyArray`.
+
+There is no performance benefit, but it could alleviate bugs before they happen.
 
 ### `\*Right*` functions
 
