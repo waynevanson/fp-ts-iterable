@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.2.0 (2022-07-29)
+
+
+### Features
+
+* **iteratable-with-index:** add iteratable typeclass ([4fa2c23](https://github.com/waynevanson/fp-ts-iterable/commit/4fa2c233c06bf36d2527fa14b60d0b0f917888ef))
+
 ## 4.1.0 (2022-07-29)
 
 
