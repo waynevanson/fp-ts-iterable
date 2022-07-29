@@ -1,6 +1,6 @@
 ---
 title: takeable-right-with-index.ts
-nav_order: 5
+nav_order: 7
 parent: Modules
 ---
 
@@ -74,7 +74,7 @@ export interface TakeableRightWithIndex3<F extends URIS3, I> extends TakeableRig
 
 ```ts
 export interface TakeableRightWithIndex3C<F extends URIS3, E, I> extends TakeableRight3C<F, E> {
-  readonly takeWhileMapWithIndex: <A1, A2>(
+  readonly takeRightWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A2>
 }
@@ -110,7 +110,7 @@ export interface TakeableRightWithIndex4C<F extends URIS4, E, I> extends Takeabl
 
 ```ts
 export interface TakeableWithIndex2<F extends URIS2, I> extends TakeableRight2<F> {
-  readonly takeWhileMapWithIndex: <A1, A2>(
+  readonly takeRightWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
