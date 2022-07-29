@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.4.0 (2022-07-29)
+
+
+### Features
+
+* **takeable-right-with-index:** add typeclass ([7049335](https://github.com/waynevanson/fp-ts-iterable/commit/7049335ca4f75dcc4b9d014a88f2d98bd7979c75))
+
 ### 3.3.3 (2022-06-11)
 
 ### 3.3.2 (2022-06-11)
