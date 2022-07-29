@@ -36,7 +36,7 @@ export interface TakeableLeftWithIndex1<F extends URIS, I>
 
 export interface TakeableWithIndex2<F extends URIS2, I>
   extends TakeableLeft2<F> {
-  readonly takeWhileMapWithIndex: <A1, A2>(
+  readonly takeLeftWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
@@ -57,7 +57,7 @@ export interface TakeableLeftWithIndex3<F extends URIS3, I>
 
 export interface TakeableLeftWithIndex3C<F extends URIS3, E, I>
   extends TakeableLeft3C<F, E> {
-  readonly takeWhileMapWithIndex: <A1, A2>(
+  readonly takeLeftWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A2>
 }
