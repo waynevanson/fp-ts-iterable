@@ -34,7 +34,7 @@ export interface TakeableRightWithIndex1<F extends URIS, I>
   ) => (fa: Kind<F, A1>) => Kind<F, A2>
 }
 
-export interface TakeableWithIndex2<F extends URIS2, I>
+export interface TakeableRightWithIndex2<F extends URIS2, I>
   extends TakeableRight2<F> {
   readonly takeRightWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
