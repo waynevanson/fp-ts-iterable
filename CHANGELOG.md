@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.1.0 (2022-07-29)
+
+
+### Features
+
+* **droppable-right-with-index:** add typelass ([e391418](https://github.com/waynevanson/fp-ts-iterable/commit/e39141873502a9b968b0aecad3a81ce7aeaee065))
+
 ## 4.0.0 (2022-07-29)
 
 
