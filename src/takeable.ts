@@ -11,78 +11,74 @@ import {
 } from "fp-ts/HKT"
 import { Option } from "fp-ts/lib/Option"
 
-export interface TakeableLeft<F> {
+export interface Takeable<F> {
   readonly URI: F
-  readonly takeLeft: (count: number) => <A>(fa: HKT<F, A>) => HKT<F, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly take: (count: number) => <A>(fa: HKT<F, A>) => HKT<F, A>
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => (fa: HKT<F, A>) => HKT<F, B>
 }
 
-export interface TakeableLeft1<F extends URIS> {
+export interface Takeable1<F extends URIS> {
   readonly URI: F
-  readonly takeLeft: (count: number) => <A>(fa: Kind<F, A>) => Kind<F, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly take: (count: number) => <A>(fa: Kind<F, A>) => Kind<F, A>
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => (fa: Kind<F, A>) => Kind<F, B>
 }
 
-export interface TakeableLeft2<F extends URIS2> {
+export interface Takeable2<F extends URIS2> {
   readonly URI: F
-  readonly takeLeft: (
-    count: number
-  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly take: (count: number) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => <E>(fa: Kind2<F, E, A>) => Kind2<F, E, B>
 }
 
-export interface TakeableLeft2C<F extends URIS2, E> {
+export interface Takeable2C<F extends URIS2, E> {
   readonly URI: F
-  readonly takeLeft: (
-    count: number
-  ) => <A>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly take: (count: number) => <A>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => (fa: Kind2<F, E, A>) => Kind2<F, E, B>
 }
 
-export interface TakeableLeft3<F extends URIS3> {
+export interface Takeable3<F extends URIS3> {
   readonly URI: F
-  readonly takeLeft: (
+  readonly take: (
     count: number
   ) => <R, E, A>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => <R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
 }
 
-export interface TakeableLeft3C<F extends URIS3, E> {
+export interface Takeable3C<F extends URIS3, E> {
   readonly URI: F
-  readonly takeLeft: (
+  readonly take: (
     count: number
   ) => <R, A>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, B>
 }
 
-export interface TakeableLeft4<F extends URIS4> {
+export interface Takeable4<F extends URIS4> {
   readonly URI: F
-  readonly takeLeft: (
+  readonly take: (
     count: number
   ) => <S, R, E, A>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => <S, R, E>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, B>
 }
 
-export interface TakeableLeft4C<F extends URIS4, E> {
+export interface Takeable4C<F extends URIS4, E> {
   readonly URI: F
-  readonly takeLeft: (
+  readonly take: (
     count: number
   ) => <S, R, A>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
-  readonly takeLeftWhileMap: <A, B>(
+  readonly takeWhileMap: <A, B>(
     f: (a: A) => Option<B>
   ) => <S, R>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, B>
 }
