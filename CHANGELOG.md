@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.0.0 (2022-07-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **takeable-right-with-index:** ensure property is `takeRightWhileMapWithIndex`
+
+### Bug Fixes
+
+* **takeable-right-with-index:** ensure property is `takeRightWhileMapWithIndex` ([3c45703](https://github.com/waynevanson/fp-ts-iterable/commit/3c45703d7a55282793d23513ef9d899b8210d166))
+
 ## 3.4.0 (2022-07-29)
 
 
