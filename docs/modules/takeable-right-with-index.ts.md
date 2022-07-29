@@ -1,6 +1,6 @@
 ---
 title: takeable-right-with-index.ts
-nav_order: 7
+nav_order: 9
 parent: Modules
 ---
 
@@ -13,12 +13,12 @@ parent: Modules
 - [utils](#utils)
   - [TakeableRightWithIndex (interface)](#takeablerightwithindex-interface)
   - [TakeableRightWithIndex1 (interface)](#takeablerightwithindex1-interface)
+  - [TakeableRightWithIndex2 (interface)](#takeablerightwithindex2-interface)
   - [TakeableRightWithIndex2C (interface)](#takeablerightwithindex2c-interface)
   - [TakeableRightWithIndex3 (interface)](#takeablerightwithindex3-interface)
   - [TakeableRightWithIndex3C (interface)](#takeablerightwithindex3c-interface)
   - [TakeableRightWithIndex4 (interface)](#takeablerightwithindex4-interface)
   - [TakeableRightWithIndex4C (interface)](#takeablerightwithindex4c-interface)
-  - [TakeableWithIndex2 (interface)](#takeablewithindex2-interface)
 
 ---
 
@@ -41,6 +41,18 @@ export interface TakeableRightWithIndex<F, I> extends TakeableRight<F> {
 ```ts
 export interface TakeableRightWithIndex1<F extends URIS, I> extends TakeableRight1<F> {
   readonly takeRightWhileMapWithIndex: <A1, A2>(f: (i: I, a: A1) => Option<A2>) => (fa: Kind<F, A1>) => Kind<F, A2>
+}
+```
+
+## TakeableRightWithIndex2 (interface)
+
+**Signature**
+
+```ts
+export interface TakeableRightWithIndex2<F extends URIS2, I> extends TakeableRight2<F> {
+  readonly takeRightWhileMapWithIndex: <A1, A2>(
+    f: (i: I, a: A1) => Option<A2>
+  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 ```
 
@@ -101,17 +113,5 @@ export interface TakeableRightWithIndex4C<F extends URIS4, E, I> extends Takeabl
   readonly takeRightWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, S, R>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A2>
-}
-```
-
-## TakeableWithIndex2 (interface)
-
-**Signature**
-
-```ts
-export interface TakeableWithIndex2<F extends URIS2, I> extends TakeableRight2<F> {
-  readonly takeRightWhileMapWithIndex: <A1, A2>(
-    f: (i: I, a: A1) => Option<A2>
-  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 ```

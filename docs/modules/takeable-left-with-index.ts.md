@@ -1,6 +1,6 @@
 ---
 title: takeable-left-with-index.ts
-nav_order: 5
+nav_order: 7
 parent: Modules
 ---
 
@@ -13,12 +13,12 @@ parent: Modules
 - [utils](#utils)
   - [TakeableLeftWithIndex (interface)](#takeableleftwithindex-interface)
   - [TakeableLeftWithIndex1 (interface)](#takeableleftwithindex1-interface)
+  - [TakeableLeftWithIndex2 (interface)](#takeableleftwithindex2-interface)
   - [TakeableLeftWithIndex2C (interface)](#takeableleftwithindex2c-interface)
   - [TakeableLeftWithIndex3 (interface)](#takeableleftwithindex3-interface)
   - [TakeableLeftWithIndex3C (interface)](#takeableleftwithindex3c-interface)
   - [TakeableLeftWithIndex4 (interface)](#takeableleftwithindex4-interface)
   - [TakeableLeftWithIndex4C (interface)](#takeableleftwithindex4c-interface)
-  - [TakeableWithIndex2 (interface)](#takeablewithindex2-interface)
 
 ---
 
@@ -41,6 +41,18 @@ export interface TakeableLeftWithIndex<F, I> extends TakeableLeft<F> {
 ```ts
 export interface TakeableLeftWithIndex1<F extends URIS, I> extends TakeableLeft1<F> {
   readonly takeLeftWhileMapWithIndex: <A1, A2>(f: (i: I, a: A1) => Option<A2>) => (fa: Kind<F, A1>) => Kind<F, A2>
+}
+```
+
+## TakeableLeftWithIndex2 (interface)
+
+**Signature**
+
+```ts
+export interface TakeableLeftWithIndex2<F extends URIS2, I> extends TakeableLeft2<F> {
+  readonly takeLeftWhileMapWithIndex: <A1, A2>(
+    f: (i: I, a: A1) => Option<A2>
+  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 ```
 
@@ -101,17 +113,5 @@ export interface TakeableLeftWithIndex4C<F extends URIS4, E, I> extends Takeable
   readonly takeLeftWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, S, R>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A2>
-}
-```
-
-## TakeableWithIndex2 (interface)
-
-**Signature**
-
-```ts
-export interface TakeableWithIndex2<F extends URIS2, I> extends TakeableLeft2<F> {
-  readonly takeLeftWhileMapWithIndex: <A1, A2>(
-    f: (i: I, a: A1) => Option<A2>
-  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 ```
