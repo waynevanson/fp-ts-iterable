@@ -1,6 +1,6 @@
 ---
 title: takeable-right.ts
-nav_order: 10
+nav_order: 12
 parent: Modules
 ---
 
