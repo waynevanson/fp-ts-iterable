@@ -21,12 +21,18 @@ import {
   Droppable4C,
 } from "./ droppable"
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex<F, I> extends Droppable<F> {
   readonly dropWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => (fa: HKT<F, A1>) => HKT<F, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex1<F extends URIS, I> extends Droppable1<F> {
   readonly dropWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
@@ -39,6 +45,9 @@ export interface DroppableWithIndex2<F extends URIS2, I> extends Droppable2<F> {
   ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex2C<F extends URIS2, I, E>
   extends Droppable2C<F, E> {
   readonly dropWhileMapWithIndex: <A1, A2>(
@@ -46,12 +55,18 @@ export interface DroppableWithIndex2C<F extends URIS2, I, E>
   ) => <A>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex3<F extends URIS3, I> extends Droppable3<F> {
   readonly dropWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex3C<F extends URIS3, E, I>
   extends Droppable3C<F, E> {
   readonly dropWhileMapWithIndex: <A1, A2>(
@@ -59,12 +74,18 @@ export interface DroppableWithIndex3C<F extends URIS3, E, I>
   ) => <A, R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex4<F extends URIS4, I> extends Droppable4<F> {
   readonly dropWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, S, R, E>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex4C<F extends URIS4, E, I>
   extends Droppable4C<F, E> {
   readonly dropWhileMapWithIndex: <A1, A2>(

@@ -11,6 +11,9 @@ import {
 } from "fp-ts/HKT"
 import { Option } from "fp-ts/lib/Option"
 
+/**
+ * @category Model
+ */
 export interface Droppable<F> {
   readonly URI: F
   readonly drop: (count: number) => <A>(fa: HKT<F, A>) => HKT<F, A>
@@ -19,6 +22,9 @@ export interface Droppable<F> {
   ) => (fa: HKT<F, A>) => HKT<F, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable1<F extends URIS> {
   readonly URI: F
   readonly drop: (count: number) => <A>(fa: Kind<F, A>) => Kind<F, A>
@@ -27,6 +33,9 @@ export interface Droppable1<F extends URIS> {
   ) => (fa: Kind<F, A>) => Kind<F, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable2<F extends URIS2> {
   readonly URI: F
   readonly drop: (count: number) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
@@ -35,6 +44,9 @@ export interface Droppable2<F extends URIS2> {
   ) => <E>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable2C<F extends URIS2, E> {
   readonly URI: F
   readonly drop: (count: number) => <A>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
@@ -43,6 +55,9 @@ export interface Droppable2C<F extends URIS2, E> {
   ) => (fa: Kind2<F, E, A>) => Kind2<F, E, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable3<F extends URIS3> {
   readonly URI: F
   readonly drop: (
@@ -53,6 +68,9 @@ export interface Droppable3<F extends URIS3> {
   ) => <R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable3C<F extends URIS3, E> {
   readonly URI: F
   readonly drop: (
@@ -63,6 +81,9 @@ export interface Droppable3C<F extends URIS3, E> {
   ) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable4<F extends URIS4> {
   readonly URI: F
   readonly drop: (
@@ -73,6 +94,9 @@ export interface Droppable4<F extends URIS4> {
   ) => <S, R, E>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
 }
 
+/**
+ * @category Model
+ */
 export interface Droppable4C<F extends URIS4, E> {
   readonly URI: F
   readonly drop: (

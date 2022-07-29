@@ -21,24 +21,36 @@ import {
   Takeable4C,
 } from "./takeable"
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex<F, I> extends Takeable<F> {
   readonly takeWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => (fa: HKT<F, A1>) => HKT<F, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex1<F extends URIS, I> extends Takeable1<F> {
   readonly takeWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => (fa: Kind<F, A1>) => Kind<F, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex2<F extends URIS2, I> extends Takeable2<F> {
   readonly takeWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex2C<F extends URIS2, I, E>
   extends Takeable2C<F, E> {
   readonly takeWhileMapWithIndex: <A1, A2>(
@@ -46,12 +58,18 @@ export interface TakeableWithIndex2C<F extends URIS2, I, E>
   ) => <A>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex3<F extends URIS3, I> extends Takeable3<F> {
   readonly takeWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex3C<F extends URIS3, E, I>
   extends Takeable3C<F, E> {
   readonly takeWhileMapWithIndex: <A1, A2>(
@@ -59,12 +77,18 @@ export interface TakeableWithIndex3C<F extends URIS3, E, I>
   ) => <A, R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex4<F extends URIS4, I> extends Takeable4<F> {
   readonly takeWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, S, R, E>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface TakeableWithIndex4C<F extends URIS4, E, I>
   extends Takeable4C<F, E> {
   readonly takeWhileMapWithIndex: <A1, A2>(
