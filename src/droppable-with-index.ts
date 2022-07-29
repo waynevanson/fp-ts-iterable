@@ -19,7 +19,7 @@ import {
   Droppable3C,
   Droppable4,
   Droppable4C,
-} from "./ droppable"
+} from "./droppable"
 
 /**
  * @category Model
