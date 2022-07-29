@@ -1,4 +1,5 @@
 export * as iterable from "./iterable"
 export * as takeableLeft from "./takeable-left"
-export * as takeableWithIndex from "./takeable-left-with-index"
+export * as takeableLeftWithIndex from "./takeable-left-with-index"
 export * as takeableRight from "./takeable-right"
+export * as takeableRightWithIndex from "./takeable-right-with-index"

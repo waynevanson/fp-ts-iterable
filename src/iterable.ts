@@ -2,15 +2,14 @@
  * @since 0.12.0
  */
 import {
-  array,
-  eq,
-  readonlyArray,
   apply,
-  functor,
   chain as chain_,
+  eq,
+  functor,
+  number,
   option,
   ord,
-  number,
+  readonlyArray,
 } from "fp-ts"
 import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
@@ -20,7 +19,6 @@ import {
   PredicateWithIndex,
   RefinementWithIndex,
 } from "fp-ts/lib/FilterableWithIndex"
-import { toReadonlyArray } from "fp-ts/lib/Foldable"
 import { flow, identity, pipe } from "fp-ts/lib/function"
 import { Functor1 } from "fp-ts/lib/Functor"
 import { FunctorWithIndex1 } from "fp-ts/lib/FunctorWithIndex"
