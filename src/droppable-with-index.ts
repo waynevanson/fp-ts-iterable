@@ -39,6 +39,9 @@ export interface DroppableWithIndex1<F extends URIS, I> extends Droppable1<F> {
   ) => (fa: Kind<F, A1>) => Kind<F, A2>
 }
 
+/**
+ * @category Model
+ */
 export interface DroppableWithIndex2<F extends URIS2, I> extends Droppable2<F> {
   readonly dropWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
