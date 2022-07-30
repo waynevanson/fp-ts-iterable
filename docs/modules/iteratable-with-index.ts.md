@@ -1,6 +1,6 @@
 ---
 title: iteratable-with-index.ts
-nav_order: 7
+nav_order: 5
 parent: Modules
 ---
 
