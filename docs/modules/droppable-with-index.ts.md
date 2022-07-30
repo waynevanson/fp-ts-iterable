@@ -13,13 +13,12 @@ parent: Modules
 - [Model](#model)
   - [DroppableWithIndex (interface)](#droppablewithindex-interface)
   - [DroppableWithIndex1 (interface)](#droppablewithindex1-interface)
+  - [DroppableWithIndex2 (interface)](#droppablewithindex2-interface)
   - [DroppableWithIndex2C (interface)](#droppablewithindex2c-interface)
   - [DroppableWithIndex3 (interface)](#droppablewithindex3-interface)
   - [DroppableWithIndex3C (interface)](#droppablewithindex3c-interface)
   - [DroppableWithIndex4 (interface)](#droppablewithindex4-interface)
   - [DroppableWithIndex4C (interface)](#droppablewithindex4c-interface)
-- [utils](#utils)
-  - [DroppableWithIndex2 (interface)](#droppablewithindex2-interface)
 
 ---
 
@@ -42,6 +41,18 @@ export interface DroppableWithIndex<F, I> extends Droppable<F> {
 ```ts
 export interface DroppableWithIndex1<F extends URIS, I> extends Droppable1<F> {
   readonly dropWhileMapWithIndex: <A1, A2>(f: (i: I, a: A1) => Option<A2>) => (fa: Kind<F, A1>) => Kind<F, A2>
+}
+```
+
+## DroppableWithIndex2 (interface)
+
+**Signature**
+
+```ts
+export interface DroppableWithIndex2<F extends URIS2, I> extends Droppable2<F> {
+  readonly dropWhileMapWithIndex: <A1, A2>(
+    f: (i: I, a: A1) => Option<A2>
+  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 ```
 
@@ -100,19 +111,5 @@ export interface DroppableWithIndex4C<F extends URIS4, E, I> extends Droppable4C
   readonly dropWhileMapWithIndex: <A1, A2>(
     f: (i: I, a: A1) => Option<A2>
   ) => <A, S, R>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A2>
-}
-```
-
-# utils
-
-## DroppableWithIndex2 (interface)
-
-**Signature**
-
-```ts
-export interface DroppableWithIndex2<F extends URIS2, I> extends Droppable2<F> {
-  readonly dropWhileMapWithIndex: <A1, A2>(
-    f: (i: I, a: A1) => Option<A2>
-  ) => <A, E>(fa: Kind2<F, E, A>) => Kind2<F, E, A2>
 }
 ```
