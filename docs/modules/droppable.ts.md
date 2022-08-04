@@ -19,6 +19,8 @@ parent: Modules
   - [Droppable3C (interface)](#droppable3c-interface)
   - [Droppable4 (interface)](#droppable4-interface)
   - [Droppable4C (interface)](#droppable4c-interface)
+- [utils](#utils)
+  - [dropWhile](#dropwhile)
 
 ---
 
@@ -118,4 +120,53 @@ export interface Droppable4C<F extends URIS4, E> {
   readonly drop: (count: number) => <S, R, A>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
   readonly dropWhileMap: <A, B>(f: (a: A) => Option<B>) => <S, R>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
 }
+```
+
+# utils
+
+## dropWhile
+
+**Signature**
+
+```ts
+export declare function dropWhile<F extends URIS4, E>(
+  Droppable: Droppable4C<F, E>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => <S, R>(fa: Kind4<F, S, R, E, A1>) => Kind4<F, S, R, E, A1>
+export declare function dropWhile<F extends URIS4, E>(
+  Droppable: Droppable4C<F, E>
+): <A>(f: Predicate<A>) => <S, R>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
+export declare function dropWhile<F extends URIS4>(
+  Droppable: Droppable4<F>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => <S, R, E>(fa: Kind4<F, S, R, E, A1>) => Kind4<F, S, R, E, A1>
+export declare function dropWhile<F extends URIS4>(
+  Droppable: Droppable4<F>
+): <A>(f: Predicate<A>) => <S, R, E>(fa: Kind4<F, S, R, E, A>) => Kind4<F, S, R, E, A>
+export declare function dropWhile<F extends URIS3, E>(
+  Droppable: Droppable3C<F, E>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => <R>(fa: Kind3<F, R, E, A1>) => Kind3<F, R, E, A1>
+export declare function dropWhile<F extends URIS3, E>(
+  Droppable: Droppable3C<F, E>
+): <A>(f: Predicate<A>) => <R>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
+export declare function dropWhile<F extends URIS3>(
+  Droppable: Droppable3<F>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => <R, E>(fa: Kind3<F, R, E, A1>) => Kind3<F, R, E, A1>
+export declare function dropWhile<F extends URIS3>(
+  Droppable: Droppable3<F>
+): <A>(f: Predicate<A>) => <R, E>(fa: Kind3<F, R, E, A>) => Kind3<F, R, E, A>
+export declare function dropWhile<F extends URIS2, E>(
+  Droppable: Droppable2C<F, E>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => (fa: Kind2<F, E, A1>) => Kind2<F, E, A1>
+export declare function dropWhile<F extends URIS2, E>(
+  Droppable: Droppable2C<F, E>
+): <A>(f: Predicate<A>) => (fa: Kind2<F, E, A>) => Kind2<F, E, A>
+export declare function dropWhile<F extends URIS2>(
+  Droppable: Droppable2<F>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => <E>(fa: Kind2<F, E, A1>) => Kind2<F, E, A1>
+export declare function dropWhile<F extends URIS2>(
+  Droppable: Droppable2<F>
+): <A>(f: Predicate<A>) => <E>(fa: Kind2<F, E, A>) => Kind2<F, E, A>
+export declare function dropWhile<F>(
+  Droppable: Droppable<F>
+): <A1, A2 extends A1>(f: Refinement<A1, A2>) => (fa: HKT<F, A1>) => HKT<F, A1>
+export declare function dropWhile<F>(Droppable: Droppable<F>): <A>(f: Predicate<A>) => (fa: HKT<F, A>) => HKT<F, A>
 ```
