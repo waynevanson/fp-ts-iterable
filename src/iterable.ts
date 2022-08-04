@@ -28,6 +28,8 @@ import { Pointed1 } from "fp-ts/lib/Pointed"
 import { Predicate } from "fp-ts/lib/Predicate"
 import { Refinement } from "fp-ts/lib/Refinement"
 import { Unfoldable1 } from "fp-ts/lib/Unfoldable"
+import { Droppable1 } from "./droppable"
+import { DroppableWithIndex1 } from "./droppable-with-index"
 
 /**
  * @category Model
@@ -241,6 +243,72 @@ export const ToReadonlyArray: NaturalTransformation11<
 }
 
 /**
+ * @category Combinators
+ */
+export const dropLeftWhileMapWithIndex: DroppableWithIndex1<
+  URI,
+  number
+>["dropWhileMapWithIndex"] = (f) => (fa) => ({
+  *[Symbol.iterator]() {
+    let i = 0
+    const iterator = fa[Symbol.iterator]()
+
+    while (true) {
+      const result = iterator.next()
+
+      if (result.done) {
+        return
+      }
+
+      if (option.isNone(f(i++, result.value))) {
+        yield result.value as never
+        break
+      }
+    }
+
+    while (true) {
+      const result = iterator.next()
+
+      if (result.done) {
+        return
+      }
+
+      yield result.value as never
+    }
+  },
+})
+
+/**
+ * @category Combinators
+ */
+export const dropLeft =
+  (count: number) =>
+  <A1>(fa: Iterable<A1>) =>
+    pipe(
+      fa,
+      dropLeftWhileWithIndex(
+        (i) => i < ord.clamp(number.Ord)(0, Number.MAX_SAFE_INTEGER)(count)
+      )
+    )
+
+/**
+ * @category Combinators
+ */
+export const dropLeftWhileMap: Droppable1<URI>["dropWhileMap"] = (f) =>
+  dropLeftWhileMapWithIndex((i, a) => f(a) as never)
+
+export const DroppableLeft: Droppable1<URI> = {
+  URI,
+  drop: dropLeft,
+  dropWhileMap: dropLeftWhileMap,
+}
+
+export const DroppableLeftWithIndex: DroppableWithIndex1<URI, number> = {
+  ...DroppableLeft,
+  dropWhileMapWithIndex: dropLeftWhileMapWithIndex,
+}
+
+/**
  * @category NaturalTransformation
  */
 export const FromReadonlyArray: NaturalTransformation11<
@@ -253,47 +321,6 @@ export const FromReadonlyArray: NaturalTransformation11<
     }
   },
 })
-
-/**
- * @category Combinators
- */
-export const dropLeftWhileMapWithIndex =
-  <A1, A2>(f: (index: number, a: A1) => option.Option<A2>) =>
-  (fa: Iterable<A1>): Iterable<A1> => ({
-    *[Symbol.iterator]() {
-      let i = 0
-      const iterator = fa[Symbol.iterator]()
-
-      while (true) {
-        const result = iterator.next()
-
-        if (result.done) {
-          return
-        }
-
-        if (option.isNone(f(i++, result.value))) {
-          yield result.value
-          break
-        }
-      }
-
-      while (true) {
-        const result = iterator.next()
-
-        if (result.done) {
-          return
-        }
-
-        yield result.value
-      }
-    },
-  })
-
-/**
- * @category Combinators
- */
-export const dropLeftWhileMap = <A1, A2>(f: (a: A1) => option.Option<A2>) =>
-  dropLeftWhileMapWithIndex((i, a: A1) => f(a))
 
 /**
  * @category Combinators
@@ -314,19 +341,6 @@ export const dropLeftWhileWithIndex = <A1, A2 extends A1>(
 export const dropLeftWhile = <A1, A2 extends A1>(
   f: Predicate<A1> | Refinement<A1, A2>
 ) => dropLeftWhileWithIndex((i, a: A1) => f(a))
-
-/**
- * @category Combinators
- */
-export const dropLeft =
-  (count: number) =>
-  <A1>(fa: Iterable<A1>) =>
-    pipe(
-      fa,
-      dropLeftWhileWithIndex(
-        (i) => i < ord.clamp(number.Ord)(0, Number.MAX_SAFE_INTEGER)(count)
-      )
-    )
 
 /**
  * @category Combinators
