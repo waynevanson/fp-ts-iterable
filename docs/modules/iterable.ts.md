@@ -58,6 +58,9 @@ Added in v0.12.0
   - [of](#of)
 - [Unfoldable](#unfoldable-1)
   - [unfold](#unfold)
+- [utils](#utils)
+  - [DroppableLeft](#droppableleft)
+  - [DroppableLeftWithIndex](#droppableleftwithindex)
 
 ---
 
@@ -160,7 +163,7 @@ export declare const dropLeftWhile: <A1, A2 extends A1>(
 **Signature**
 
 ```ts
-export declare const dropLeftWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>) => (fa: Iterable<A1>) => Iterable<A1>
+export declare const dropLeftWhileMap: <A, B>(f: (a: A) => option.Option<B>) => (fa: Iterable<A>) => Iterable<A>
 ```
 
 ## dropLeftWhileMapWithIndex
@@ -169,8 +172,8 @@ export declare const dropLeftWhileMap: <A1, A2>(f: (a: A1) => option.Option<A2>)
 
 ```ts
 export declare const dropLeftWhileMapWithIndex: <A1, A2>(
-  f: (index: number, a: A1) => option.Option<A2>
-) => (fa: Iterable<A1>) => Iterable<A1>
+  f: (i: number, a: A1) => option.Option<A2>
+) => (fa: Iterable<A1>) => Iterable<A2>
 ```
 
 ## dropLeftWhileWithIndex
@@ -387,4 +390,22 @@ export declare const of: <A>(a: A) => Iterable<A>
 
 ```ts
 export declare const unfold: <A, B>(b: B, f: (b: B) => option.Option<[A, B]>) => Iterable<A>
+```
+
+# utils
+
+## DroppableLeft
+
+**Signature**
+
+```ts
+export declare const DroppableLeft: Droppable1<'Iterable'>
+```
+
+## DroppableLeftWithIndex
+
+**Signature**
+
+```ts
+export declare const DroppableLeftWithIndex: DroppableWithIndex1<'Iterable', number>
 ```

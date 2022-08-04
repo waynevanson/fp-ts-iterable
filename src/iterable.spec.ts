@@ -15,7 +15,10 @@ describe("Iterable", () => {
       }
     })
 
-    test.todo("Do")
+    test("Do", () => {
+      const result = pipe(iterable.Do, iterable.ToReadonlyArray)
+      expect(result).toStrictEqual([{}])
+    })
   })
 
   describe("Functor", () => {

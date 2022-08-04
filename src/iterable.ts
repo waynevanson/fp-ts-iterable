@@ -409,3 +409,8 @@ export const unfold: Unfoldable1<URI>["unfold"] = (b, f) => ({
  * @category Instances
  */
 export const Unfoldable: Unfoldable1<URI> = { URI, unfold }
+
+/**
+ * @category Pointed
+ */
+export const Do = of({})
