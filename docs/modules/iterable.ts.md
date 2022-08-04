@@ -54,6 +54,7 @@ Added in v0.12.0
   - [FromReadonlyArray](#fromreadonlyarray)
   - [ToReadonlyArray](#toreadonlyarray)
 - [Pointed](#pointed)
+  - [Do](#do)
   - [Pointed](#pointed-1)
   - [of](#of)
 - [Unfoldable](#unfoldable-1)
@@ -365,6 +366,14 @@ export declare const ToReadonlyArray: NaturalTransformation11<'Iterable', 'Reado
 ```
 
 # Pointed
+
+## Do
+
+**Signature**
+
+```ts
+export declare const Do: Iterable<{}>
+```
 
 ## Pointed
 

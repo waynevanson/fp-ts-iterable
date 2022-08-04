@@ -297,12 +297,18 @@ export const dropLeft =
 export const dropLeftWhileMap: Droppable1<URI>["dropWhileMap"] = (f) =>
   dropLeftWhileMapWithIndex((i, a) => f(a) as never)
 
+/**
+ * @category Instances
+ */
 export const DroppableLeft: Droppable1<URI> = {
   URI,
   drop: dropLeft,
   dropWhileMap: dropLeftWhileMap,
 }
 
+/**
+ * @category Instances
+ */
 export const DroppableLeftWithIndex: DroppableWithIndex1<URI, number> = {
   ...DroppableLeft,
   dropWhileMapWithIndex: dropLeftWhileMapWithIndex,
