@@ -43,6 +43,8 @@ Added in v0.12.0
   - [Applicative](#applicative)
   - [Apply](#apply-1)
   - [Chain](#chain-1)
+  - [DroppableLeft](#droppableleft)
+  - [DroppableLeftWithIndex](#droppableleftwithindex)
   - [Functor](#functor-1)
   - [FunctorWithIndex](#functorwithindex)
   - [Monad](#monad)
@@ -59,9 +61,6 @@ Added in v0.12.0
   - [of](#of)
 - [Unfoldable](#unfoldable-1)
   - [unfold](#unfold)
-- [utils](#utils)
-  - [DroppableLeft](#droppableleft)
-  - [DroppableLeftWithIndex](#droppableleftwithindex)
 
 ---
 
@@ -293,6 +292,22 @@ export declare const Apply: apply.Apply1<'Iterable'>
 export declare const Chain: chain_.Chain1<'Iterable'>
 ```
 
+## DroppableLeft
+
+**Signature**
+
+```ts
+export declare const DroppableLeft: Droppable1<'Iterable'>
+```
+
+## DroppableLeftWithIndex
+
+**Signature**
+
+```ts
+export declare const DroppableLeftWithIndex: DroppableWithIndex1<'Iterable', number>
+```
+
 ## Functor
 
 **Signature**
@@ -399,22 +414,4 @@ export declare const of: <A>(a: A) => Iterable<A>
 
 ```ts
 export declare const unfold: <A, B>(b: B, f: (b: B) => option.Option<[A, B]>) => Iterable<A>
-```
-
-# utils
-
-## DroppableLeft
-
-**Signature**
-
-```ts
-export declare const DroppableLeft: Droppable1<'Iterable'>
-```
-
-## DroppableLeftWithIndex
-
-**Signature**
-
-```ts
-export declare const DroppableLeftWithIndex: DroppableWithIndex1<'Iterable', number>
 ```
