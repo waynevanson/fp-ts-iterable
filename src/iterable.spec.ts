@@ -102,7 +102,23 @@ describe("Iterable", () => {
   describe("Iteratable", () => {
     test.todo("iterate")
     test.todo("iterateWhile")
-    test.todo("iterateWhileMap")
+
+    test("iterateWhileMap", () => {
+      const f = (i: number) =>
+        pipe(
+          i + 1,
+          option.fromPredicate((i) => i <= 10)
+        )
+
+      const result = pipe(
+        1,
+        iterable.iterateWhileMap(f),
+        iterable.ToReadonlyArray
+      )
+
+      const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      expect(result).toStrictEqual(expected)
+    })
   })
 
   describe("IteratableWithIndex", () => {

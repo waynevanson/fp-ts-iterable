@@ -30,6 +30,7 @@ import { Refinement } from "fp-ts/lib/Refinement"
 import { Unfoldable1 } from "fp-ts/lib/Unfoldable"
 import { Droppable1 } from "./droppable"
 import { DroppableWithIndex1 } from "./droppable-with-index"
+import { Iteratable1 } from "./iteratable"
 
 /**
  * @category Model
@@ -420,3 +421,27 @@ export const Unfoldable: Unfoldable1<URI> = { URI, unfold }
  * @category Pointed
  */
 export const Do = of({})
+
+/**
+ * @category Iteratable
+ */
+export const iterateWhileMap: Iteratable1<URI>["iterateWhileMap"] =
+  (f) => (a) => ({
+    *[Symbol.iterator]() {
+      yield a
+      let optional = f(a)
+      while (option.isSome(optional)) {
+        const value = optional.value
+        yield value
+        optional = f(value)
+      }
+    },
+  })
+
+/**
+ * @category Instances
+ */
+export const Iteratable: Iteratable1<URI> = {
+  URI,
+  iterateWhileMap,
+}
