@@ -15,7 +15,6 @@ import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
 import { Chain1 } from "fp-ts/lib/Chain"
-import { Endomorphism } from "fp-ts/lib/Endomorphism"
 import {
   PredicateWithIndex,
   RefinementWithIndex,
@@ -31,6 +30,7 @@ import { Refinement } from "fp-ts/lib/Refinement"
 import { Unfoldable1 } from "fp-ts/lib/Unfoldable"
 import { Droppable1 } from "./droppable"
 import { DroppableWithIndex1 } from "./droppable-with-index"
+import * as iteratable from "./iteratable"
 import { Iteratable1 } from "./iteratable"
 import { Takeable1 } from "./takeable"
 
@@ -451,17 +451,7 @@ export const Iteratable: Iteratable1<URI> = {
 /**
  * @category Constructors
  */
-export const iterate =
-  <A>(f: Endomorphism<A>) =>
-  (a: A): Iterable<A> => ({
-    *[Symbol.iterator]() {
-      let value = a
-      while (true) {
-        yield value
-        value = f(value)
-      }
-    },
-  })
+export const iterate = iteratable.iterate(Iteratable)
 
 /**
  * @category Takeable

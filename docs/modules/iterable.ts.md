@@ -32,6 +32,8 @@ Added in v0.12.0
   - [dropRightWhileMap](#droprightwhilemap)
   - [dropRightWhileMapWithIndex](#droprightwhilemapwithindex)
   - [dropRightWhileWithIndex](#droprightwhilewithindex)
+- [Constructors](#constructors)
+  - [iterate](#iterate)
 - [Eq](#eq)
   - [getEq](#geteq)
 - [Functor](#functor)
@@ -225,6 +227,16 @@ export declare const dropRightWhileMapWithIndex: <A1, A2>(
 export declare const dropRightWhileWithIndex: <A1, A2 extends A1>(
   f: PredicateWithIndex<number, A1> | RefinementWithIndex<number, A1, A2>
 ) => (fa: Iterable<A1>) => Iterable<A1>
+```
+
+# Constructors
+
+## iterate
+
+**Signature**
+
+```ts
+export declare const iterate: <A>(f: Endomorphism<A>) => (a: A) => Iterable<A>
 ```
 
 # Eq
