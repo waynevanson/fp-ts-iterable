@@ -47,8 +47,11 @@ Added in v0.12.0
   - [DroppableLeftWithIndex](#droppableleftwithindex)
   - [Functor](#functor-1)
   - [FunctorWithIndex](#functorwithindex)
+  - [Iteratable](#iteratable)
   - [Monad](#monad)
   - [Unfoldable](#unfoldable)
+- [Iteratable](#iteratable-1)
+  - [iterateWhileMap](#iteratewhilemap)
 - [Model](#model)
   - [URI](#uri)
   - [URI (type alias)](#uri-type-alias)
@@ -59,6 +62,8 @@ Added in v0.12.0
   - [Do](#do)
   - [Pointed](#pointed-1)
   - [of](#of)
+- [Takeable](#takeable)
+  - [takeLeft](#takeleft)
 - [Unfoldable](#unfoldable-1)
   - [unfold](#unfold)
 
@@ -324,6 +329,14 @@ export declare const Functor: functor.Functor1<'Iterable'>
 export declare const FunctorWithIndex: FunctorWithIndex1<'Iterable', number>
 ```
 
+## Iteratable
+
+**Signature**
+
+```ts
+export declare const Iteratable: Iteratable1<'Iterable'>
+```
+
 ## Monad
 
 **Signature**
@@ -338,6 +351,16 @@ export declare const Monad: Monad1<'Iterable'>
 
 ```ts
 export declare const Unfoldable: Unfoldable1<'Iterable'>
+```
+
+# Iteratable
+
+## iterateWhileMap
+
+**Signature**
+
+```ts
+export declare const iterateWhileMap: <A>(f: (a: A) => option.Option<A>) => (a: A) => Iterable<A>
 ```
 
 # Model
@@ -404,6 +427,16 @@ export declare const Pointed: Pointed1<'Iterable'>
 
 ```ts
 export declare const of: <A>(a: A) => Iterable<A>
+```
+
+# Takeable
+
+## takeLeft
+
+**Signature**
+
+```ts
+export declare const takeLeft: (count: number) => <A>(fa: Iterable<A>) => Iterable<A>
 ```
 
 # Unfoldable

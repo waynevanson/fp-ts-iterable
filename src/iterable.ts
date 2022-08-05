@@ -15,6 +15,7 @@ import type {} from "fp-ts/HKT"
 import { Applicative1 } from "fp-ts/lib/Applicative"
 import { Apply1 } from "fp-ts/lib/Apply"
 import { Chain1 } from "fp-ts/lib/Chain"
+import { Endomorphism } from "fp-ts/lib/Endomorphism"
 import {
   PredicateWithIndex,
   RefinementWithIndex,
@@ -446,6 +447,21 @@ export const Iteratable: Iteratable1<URI> = {
   URI,
   iterateWhileMap,
 }
+
+/**
+ * @category Constructors
+ */
+export const iterate =
+  <A>(f: Endomorphism<A>) =>
+  (a: A): Iterable<A> => ({
+    *[Symbol.iterator]() {
+      let value = a
+      while (true) {
+        yield value
+        value = f(value)
+      }
+    },
+  })
 
 /**
  * @category Takeable

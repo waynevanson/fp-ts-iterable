@@ -100,8 +100,17 @@ describe("Iterable", () => {
   })
 
   describe("Iteratable", () => {
-    test.todo("iterate")
-    test.todo("iterateWhile")
+    test("iterate", () => {
+      const result = pipe(
+        1,
+        iterable.iterate((i) => i + 1),
+        iterable.takeLeft(10),
+        iterable.ToReadonlyArray
+      )
+
+      const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      expect(result).toStrictEqual(expected)
+    })
 
     test("iterateWhileMap", () => {
       const f = (i: number) =>
