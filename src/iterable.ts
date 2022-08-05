@@ -31,6 +31,7 @@ import { Unfoldable1 } from "fp-ts/lib/Unfoldable"
 import { Droppable1 } from "./droppable"
 import { DroppableWithIndex1 } from "./droppable-with-index"
 import { Iteratable1 } from "./iteratable"
+import { Takeable1 } from "./takeable"
 
 /**
  * @category Model
@@ -445,3 +446,16 @@ export const Iteratable: Iteratable1<URI> = {
   URI,
   iterateWhileMap,
 }
+
+/**
+ * @category Takeable
+ */
+export const takeLeft: Takeable1<URI>["take"] = (count) => (fa) => ({
+  *[Symbol.iterator]() {
+    let i = 0
+    for (const a of fa) {
+      if (i++ >= count) break
+      yield a
+    }
+  },
+})

@@ -656,9 +656,21 @@ describe("Iterable", () => {
   })
 
   describe("Takeable", () => {
-    test.todo("take")
-    test.todo("takeWhile")
-    test.todo("takeWhileMap")
+    test("takeLeft", () => {
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      const count = 7
+      const expected = array.slice(0, count)
+      const result = pipe(
+        array,
+        iterable.FromReadonlyArray,
+        iterable.takeLeft(count),
+        iterable.ToReadonlyArray
+      )
+      expect(result).toStrictEqual(expected)
+    })
+
+    test.todo("takeLeftWhile")
+    test.todo("takeLeftWhileMap")
 
     test.todo("takeRight")
     test.todo("takeRightWhile")
