@@ -455,6 +455,9 @@ export const Iteratable: Iteratable1<URI> = {
  */
 export const iterate = iteratable.iterate(Iteratable)
 
+/**
+ * @category Constructors
+ */
 export const iterateWhileMapWithIndex: IteratableWithIndex1<
   URI,
   number
@@ -471,6 +474,9 @@ export const iterateWhileMapWithIndex: IteratableWithIndex1<
   },
 })
 
+/**
+ * @category Instances
+ */
 export const IteratableWithIndex: IteratableWithIndex1<URI, number> = {
   ...Iteratable,
   iterateWhileMapWithIndex,
