@@ -28,11 +28,13 @@ import { Pointed1 } from "fp-ts/lib/Pointed"
 import { Predicate } from "fp-ts/lib/Predicate"
 import { Refinement } from "fp-ts/lib/Refinement"
 import { Unfoldable1 } from "fp-ts/lib/Unfoldable"
+import * as iteratableWithIndex from "./iteratable-with-index"
 import { Droppable1 } from "./droppable"
 import { DroppableWithIndex1 } from "./droppable-with-index"
 import * as iteratable from "./iteratable"
 import { Iteratable1 } from "./iteratable"
 import { Takeable1 } from "./takeable"
+import { IteratableWithIndex1 } from "./iteratable-with-index"
 
 /**
  * @category Model
@@ -452,6 +454,27 @@ export const Iteratable: Iteratable1<URI> = {
  * @category Constructors
  */
 export const iterate = iteratable.iterate(Iteratable)
+
+export const iterateWhileMapWithIndex: IteratableWithIndex1<
+  URI,
+  number
+>["iterateWhileMapWithIndex"] = (f) => (a) => ({
+  *[Symbol.iterator]() {
+    let i = 0
+    yield a
+
+    let next = f(i++, a)
+    while (option.isSome(next)) {
+      yield next.value
+      next = f(i++, next.value)
+    }
+  },
+})
+
+export const IteratableWithIndex: IteratableWithIndex1<URI, number> = {
+  ...Iteratable,
+  iterateWhileMapWithIndex,
+}
 
 /**
  * @category Takeable

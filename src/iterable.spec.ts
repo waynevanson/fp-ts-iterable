@@ -1,8 +1,8 @@
-import * as iterable from "./iterable"
-import * as laws from "fp-ts-laws"
 import * as fc from "fast-check"
 import { option, readonlyArray, string } from "fp-ts"
+import * as laws from "fp-ts-laws"
 import { constVoid, flow, pipe, tuple } from "fp-ts/lib/function"
+import * as iterable from "./iterable"
 
 describe("Iterable", () => {
   describe("Pointed", () => {
@@ -133,7 +133,23 @@ describe("Iterable", () => {
   describe("IteratableWithIndex", () => {
     test.todo("iterateWithIndex")
     test.todo("iterateWhileWithIndex")
-    test.todo("iterateWhileMapWithIndex")
+
+    test("iterateWhileMapWithIndex", () => {
+      const initialValue = 1
+
+      const result = pipe(
+        initialValue,
+        iterable.iterateWhileMapWithIndex((i, a: number) =>
+          pipe(
+            i + a,
+            option.fromPredicate((a) => a < 20)
+          )
+        ),
+        iterable.ToReadonlyArray
+      )
+
+      expect(result).toStrictEqual([1, 1, 2, 4, 7, 11, 16])
+    })
   })
 
   describe("Apply", () => {

@@ -2,6 +2,7 @@
  * Recursively generate values for a structure.
  */
 
+import { option } from "fp-ts"
 import {
   HKT,
   Kind,
@@ -13,6 +14,7 @@ import {
   URIS3,
   URIS4,
 } from "fp-ts/HKT"
+import { Endomorphism } from "fp-ts/lib/Endomorphism"
 import { Option } from "fp-ts/lib/Option"
 import {
   Iteratable,
@@ -110,4 +112,37 @@ export interface IteratableWithIndex4C<F extends URIS4, I, E>
   readonly iterateWhileMapWithIndex: <A>(
     f: (i: I, a: A) => Option<A>
   ) => <S, R>(a: A) => Kind4<F, S, R, E, A>
+}
+
+/**
+ * @category Constructors
+ */
+export function iterateWithIndex<F extends URIS4, E, I>(
+  F: IteratableWithIndex4C<F, E, I>
+): <A>(f: (i: I, a: A) => A) => <S, R>(a: A) => Kind4<F, S, R, E, A>
+export function iterateWithIndex<F extends URIS4, I>(
+  F: IteratableWithIndex4<F, I>
+): <A>(f: (i: I, a: A) => A) => <S, R, E>(a: A) => Kind4<F, S, R, E, A>
+export function iterateWithIndex<F extends URIS3, E, I>(
+  F: IteratableWithIndex3C<F, E, I>
+): <A>(f: (i: I, a: A) => A) => <R>(a: A) => Kind3<F, R, E, A>
+export function iterateWithIndex<F extends URIS3, I>(
+  F: IteratableWithIndex3<F, I>
+): <A>(f: (i: I, a: A) => A) => <R, E>(a: A) => Kind3<F, R, E, A>
+export function iterateWithIndex<F extends URIS2, E, I>(
+  F: IteratableWithIndex2C<F, E, I>
+): <A>(f: (i: I, a: A) => A) => (a: A) => Kind2<F, E, A>
+export function iterateWithIndex<F extends URIS2, I>(
+  F: IteratableWithIndex2<F, I>
+): <A>(f: (i: I, a: A) => A) => <E>(a: A) => Kind2<F, E, A>
+export function iterateWithIndex<F extends URIS, I>(
+  F: IteratableWithIndex1<F, I>
+): <A>(f: (i: I, a: A) => A) => (a: A) => Kind<F, A>
+export function iterateWithIndex<F, I>(
+  F: IteratableWithIndex<F, I>
+): <A>(f: (i: I, a: A) => A) => (a: A) => HKT<F, A>
+export function iterateWithIndex<F, I>(
+  F: IteratableWithIndex<F, I>
+): <A>(f: (i: I, a: A) => A) => (a: A) => HKT<F, A> {
+  return (f) => F.iterateWhileMapWithIndex((i, a) => option.some(f(i, a)))
 }
