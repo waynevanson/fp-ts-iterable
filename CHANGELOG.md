@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 4.3.0 (2022-08-14)
+
+
+### Features
+
+* **iterable:** add `iterateWhileMapWithIndex` and `IteratableWithIndex` ([88e6f51](https://github.com/waynevanson/fp-ts-iterable/commit/88e6f51d6fb2a24018a60ee59de9074157daec70))
+
 ### 4.2.4 (2022-08-04)
 
 ### 4.2.3 (2022-07-30)
