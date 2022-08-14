@@ -34,6 +34,7 @@ Added in v0.12.0
   - [dropRightWhileWithIndex](#droprightwhilewithindex)
 - [Constructors](#constructors)
   - [iterate](#iterate)
+  - [iterateWhileMapWithIndex](#iteratewhilemapwithindex)
 - [Eq](#eq)
   - [getEq](#geteq)
 - [Functor](#functor)
@@ -50,6 +51,7 @@ Added in v0.12.0
   - [Functor](#functor-1)
   - [FunctorWithIndex](#functorwithindex)
   - [Iteratable](#iteratable)
+  - [IteratableWithIndex](#iteratablewithindex)
   - [Monad](#monad)
   - [Unfoldable](#unfoldable)
 - [Iteratable](#iteratable-1)
@@ -239,6 +241,14 @@ export declare const dropRightWhileWithIndex: <A1, A2 extends A1>(
 export declare const iterate: <A>(f: Endomorphism<A>) => (a: A) => Iterable<A>
 ```
 
+## iterateWhileMapWithIndex
+
+**Signature**
+
+```ts
+export declare const iterateWhileMapWithIndex: <A>(f: (i: number, a: A) => option.Option<A>) => (a: A) => Iterable<A>
+```
+
 # Eq
 
 ## getEq
@@ -346,7 +356,15 @@ export declare const FunctorWithIndex: FunctorWithIndex1<'Iterable', number>
 **Signature**
 
 ```ts
-export declare const Iteratable: Iteratable1<'Iterable'>
+export declare const Iteratable: iteratable.Iteratable1<'Iterable'>
+```
+
+## IteratableWithIndex
+
+**Signature**
+
+```ts
+export declare const IteratableWithIndex: iteratableWithIndex.IteratableWithIndex1<'Iterable', number>
 ```
 
 ## Monad

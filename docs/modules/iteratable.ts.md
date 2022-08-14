@@ -12,6 +12,8 @@ Recursively generate values for a structure.
 
 <h2 class="text-delta">Table of contents</h2>
 
+- [Constructors](#constructors)
+  - [iterate](#iterate)
 - [Model](#model)
   - [Iteratable (interface)](#iteratable-interface)
   - [Iteratable1 (interface)](#iteratable1-interface)
@@ -23,6 +25,35 @@ Recursively generate values for a structure.
   - [Iteratable4C (interface)](#iteratable4c-interface)
 
 ---
+
+# Constructors
+
+## iterate
+
+**Signature**
+
+```ts
+export declare function iterate<F extends URIS4, E>(
+  F: Iteratable4C<F, E>
+): <A>(f: Endomorphism<A>) => <S, R>(a: A) => Kind4<F, S, R, E, A>
+export declare function iterate<F extends URIS4>(
+  F: Iteratable4<F>
+): <A>(f: Endomorphism<A>) => <S, R, E>(a: A) => Kind4<F, S, R, E, A>
+export declare function iterate<F extends URIS3, E>(
+  F: Iteratable3C<F, E>
+): <A>(f: Endomorphism<A>) => <R>(a: A) => Kind3<F, R, E, A>
+export declare function iterate<F extends URIS3>(
+  F: Iteratable3<F>
+): <A>(f: Endomorphism<A>) => <R, E>(a: A) => Kind3<F, R, E, A>
+export declare function iterate<F extends URIS2, E>(
+  F: Iteratable2C<F, E>
+): <A>(f: Endomorphism<A>) => (a: A) => Kind2<F, E, A>
+export declare function iterate<F extends URIS2>(
+  F: Iteratable2<F>
+): <A>(f: Endomorphism<A>) => <E>(a: A) => Kind2<F, E, A>
+export declare function iterate<F extends URIS>(F: Iteratable1<F>): <A>(f: Endomorphism<A>) => (a: A) => Kind<F, A>
+export declare function iterate<F>(F: Iteratable<F>): <A>(f: Endomorphism<A>) => (a: A) => HKT<F, A>
+```
 
 # Model
 
